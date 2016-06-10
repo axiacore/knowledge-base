@@ -6,6 +6,7 @@
 *.log
 *.mo
 *.sql
+*.sqlite3
 
 # OS files
 .DS_Store

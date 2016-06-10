@@ -1,0 +1,27 @@
+<!DOCTYPE html>{% load static compress %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %} | Knowledge Base</title>
+
+{% compress css %}
+    <link rel="stylesheet" href="{% static 'bower_components/normalize-css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endcompress %}
+  </head>
+  <body>
+    <header></header>
+
+    <section>{% block content %}{% endblock %}</section>
+
+    <footer></footer>
+
+{% compress js %}
+    <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+{% endcompress %}
+  </body>
+</html>

@@ -19,9 +19,18 @@ INSTALLED_APPS = PROJECT_APPS + [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'axes',
+    'compressor',
+    'django_extensions',
+    'django_jenkins',
+    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
+    'django.middleware.http.ConditionalGetMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -29,6 +38,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # TypeError: object.__init__() takes no parameters
+    # 'axes.middleware.FailedLoginMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -58,7 +70,7 @@ DATABASES = {
     }
 }
 
-LANGUAGE_CODE = 'es-co'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Bogota'
 
@@ -69,3 +81,21 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/uploads/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+
+# django-axes
+AXES_LOGIN_FAILURE_LIMIT = 3
+AXES_USE_USER_AGENT = True
+AXES_COOLOFF_TIME = 24
+AXES_LOCKOUT_TEMPLATE = '429.html'
+
+# django-compressor
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.rCSSMinFilter',
+]
