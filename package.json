@@ -1,0 +1,17 @@
+{
+  "name": "knowledge-base",
+  "author": "AxiaCore <info@axiacore.com>",
+  "main": "gulpfile.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Axiacore/knowledge-base.git"
+  },
+  "dependencies": {
+    "browser-sync": "^2.12.5",
+    "graceful-fs": "^4.1.4",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0"
+  }
+}

@@ -1,0 +1,44 @@
+version: '2'
+services:
+  web:
+    build: .
+    image: knowledgebase
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "3000:3000"
+      - "8000:8000"
+    volumes:
+      - .:/code
+    depends_on:
+      - npm
+      - bower
+      - sass
+      - migration
+      - db
+      - redis
+  db:
+    image: postgres:9.5.0
+    volumes:
+      - .:/tmp/data/
+  redis:
+    image: redis:3.0.7
+  npm:
+    image: knowledgebase
+    command: npm install
+    volumes:
+      - .:/code
+  bower:
+    image: knowledgebase
+    command: bower install --allow-root
+    volumes:
+      - .:/code
+  sass:
+    image: knowledgebase
+    command: gulp compile-sass
+    volumes:
+      - .:/code
+  migration:
+    image: knowledgebase
+    command: python manage.py migrate --noinput
+    volumes:
+      - .:/code
