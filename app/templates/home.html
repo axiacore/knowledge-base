@@ -5,5 +5,12 @@
     <h1>
         {{ category.name }}
     </h1>
+    <ul>
+    {% for article in category.article_set.all %}
+        <li>
+        {{ article.name }}
+        </li>
+    {% endfor %}
+    </ul>
     {% endfor %}
 {% endblock %}
