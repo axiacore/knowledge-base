@@ -1,5 +1,9 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-<h1>Hola</h1>
+    {% for category in category_list %}
+    <h1>
+        {{ category.name }}
+    </h1>
+    {% endfor %}
 {% endblock %}

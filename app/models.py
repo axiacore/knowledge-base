@@ -16,6 +16,8 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name='Category'
+        verbose_name_plural='Categories'
 
 
 class Article(models.Model):
