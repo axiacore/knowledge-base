@@ -7,5 +7,5 @@ raven==5.20.0
 
 django-axes==1.7.0
 django-compressor==2.0
-django-extensions==1.6.1
+django-extensions==1.6.7
 django-jenkins==0.18.1

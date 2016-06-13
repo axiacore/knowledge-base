@@ -8,12 +8,12 @@
         <ul>
             {% for article in category.active_articles_list|slice:":5" %}
                 <li>
-                    {{ article.name }}
+                    <a href="{% url 'ArticleDefaultView' article.slug %}">{{ article.name }}</a>
                 </li>
             {% endfor %}
         </ul>
         {% if category.active_articles_list.count > 5 %}
-            <a href="">Ver todos</a>
+            <a href="{% url 'CategoryDefaultView' category.slug %}">Ver todos</a>
         {% endif %}
     {% endfor %}
 {% endblock %}

@@ -17,6 +17,16 @@ class Category(models.Model):
             is_private=False
         )
 
+    def get_absolute_url(self):
+        return reverse(
+            'CategoryDefaultView',
+            args=[
+            str(
+                self.slug
+                )
+            ]
+        )
+
     def __str__(self):
         return self.name
 
@@ -57,6 +67,16 @@ class Article(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
     )
+
+    def get_absolute_url(self):
+        return reverse(
+            'ArticleDefaultView',
+            args=[
+            str(
+                self.slug
+                )
+            ]
+        )
 
     def __str__(self):
         return self.name
