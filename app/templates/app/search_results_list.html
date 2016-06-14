@@ -1,0 +1,16 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    {% include '_search_box.html' %}
+
+    {% for article in object_list %}
+        <h1>{{ article.name }}</h1>
+        <p>
+            {{ article.content }}
+        </p>
+        <a href="{% url 'article_detail' article.slug %}">Leer más...</a>
+
+    {% empty %}
+    <p>No se encuentran resultados acordes con tu búsqueda, puedes abrir un nuevo tiquete con tu pregunta.</p>
+    {% endfor %}
+{% endblock %}

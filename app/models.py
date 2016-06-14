@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 class Category(models.Model):
@@ -11,11 +12,24 @@ class Category(models.Model):
         unique=True,
     )
 
+    def active_articles_list(self):
+        return self.article_set.filter(
+            is_active=True,
+        )
+
+    def get_absolute_url(self):
+        return reverse(
+            'category_detail',
+            args=[self.slug]
+        )
+
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ['name']
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
 
 class Article(models.Model):
@@ -49,6 +63,12 @@ class Article(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
     )
+
+    def get_absolute_url(self):
+        return reverse(
+            'article_detail',
+            args=[self.slug]
+        )
 
     def __str__(self):
         return self.name
