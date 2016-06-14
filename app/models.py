@@ -36,7 +36,7 @@ class Article(models.Model):
     category = models.ForeignKey(Category)
 
     name = models.CharField(
-        max_length=40,
+        max_length=50,
         unique=True,
     )
 

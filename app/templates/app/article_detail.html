@@ -1,6 +1,7 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
+    <small><a href="{% url 'category_detail' article.category.slug %}">Volver</a></small>
     <h1>
         {{ object.name }}
         <small>{{ object.updated_at }}</small>
