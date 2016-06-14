@@ -15,12 +15,12 @@ urlpatterns = [
 
     url(r'^$', HomeView.as_view(), name='home'),
     url(
-        r'^category/(?P<slug>[\w\-]+)/$',
+        r'^categoria/(?P<slug>[\w\-]+)/$',
         CategoryDefaultView.as_view(),
         name='CategoryDefaultView'
         ),
     url(
-        r'^article/(?P<slug>[\w\-]+)/$',
+        r'^articulo/(?P<slug>[\w\-]+)/$',
         ArticleDefaultView.as_view(),
         name='ArticleDefaultView'
         ),
