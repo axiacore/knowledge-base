@@ -3,7 +3,9 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from .views import HomeView, CategoryDefaultView, ArticleDefaultView
+from .views import HomeView
+from .views import CategoryDetailView
+from .views import ArticleDetailView
 
 
 admin.site.site_title = 'Knowledge Base'
@@ -14,16 +16,18 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^$', HomeView.as_view(), name='home'),
+
     url(
         r'^categoria/(?P<slug>[\w\-]+)/$',
-        CategoryDefaultView.as_view(),
-        name='CategoryDefaultView'
-        ),
+        CategoryDetailView.as_view(),
+        name='category_detail'
+    ),
+
     url(
         r'^articulo/(?P<slug>[\w\-]+)/$',
-        ArticleDefaultView.as_view(),
-        name='ArticleDefaultView'
-        ),
+        ArticleDetailView.as_view(),
+        name='article_detail'
+    ),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

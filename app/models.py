@@ -15,12 +15,11 @@ class Category(models.Model):
     def active_articles_list(self):
         return self.article_set.filter(
             is_active=True,
-            is_private=False
         )
 
     def get_absolute_url(self):
         return reverse(
-            'CategoryDefaultView',
+            'category_detail',
             args=[self.slug]
         )
 
@@ -67,7 +66,7 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'ArticleDefaultView',
+            'article_detail',
             args=[self.slug]
         )
 

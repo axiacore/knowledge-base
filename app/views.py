@@ -11,13 +11,11 @@ class HomeView(ListView):
     context_object_name = 'category_list'
 
 
-class CategoryDefaultView(DetailView):
-    template_name = 'category_view.html'
+class CategoryDetailView(DetailView):
     model = Category
     context_object_name = 'category'
 
 
-class ArticleDefaultView(DetailView):
-    template_name = 'article_view.html'
+class ArticleDetailView(DetailView):
     model = Article
     context_object_name = 'article'

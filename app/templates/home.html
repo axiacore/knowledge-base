@@ -3,17 +3,17 @@
 {% block content %}
     {% for category in category_list %}
         <h1>
-            {{ category.name }}
+            <a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a>
         </h1>
         <ul>
             {% for article in category.active_articles_list|slice:":5" %}
                 <li>
-                    <a href="{% url 'ArticleDefaultView' article.slug %}">{{ article.name }}</a>
+                    <a href="{% url 'article_detail' article.slug %}">{{ article.name }}</a>
                 </li>
             {% endfor %}
         </ul>
         {% if category.active_articles_list.count > 5 %}
-            <a href="{% url 'CategoryDefaultView' category.slug %}">Ver todos</a>
+            <a href="{% url 'category_detail' category.slug %}">Ver todos</a>
         {% endif %}
     {% endfor %}
 {% endblock %}
