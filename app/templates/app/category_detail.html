@@ -1,11 +1,9 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-    <h1>
-        {{ category.name }}
-    </h1>
+    <h1>{{ category.name }}</h1>
     <ul>
-        {% for article in category.article_set.all %}
+    {% for article in object.article_set.all %}
         <li>
             <a href="{% url 'article_detail' article.slug %}">{{ article.name }}</a>
         </li>

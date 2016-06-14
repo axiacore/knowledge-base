@@ -6,6 +6,7 @@ from django.contrib import admin
 from .views import HomeView
 from .views import CategoryDetailView
 from .views import ArticleDetailView
+from .views import SearchResultsListView
 
 
 admin.site.site_title = 'Knowledge Base'
@@ -27,6 +28,12 @@ urlpatterns = [
         r'^articulo/(?P<slug>[\w\-]+)/$',
         ArticleDetailView.as_view(),
         name='article_detail'
+    ),
+
+    url(
+        r'^search/$',
+        SearchResultsListView.as_view(),
+        name='search_results_list'
     ),
 
 
