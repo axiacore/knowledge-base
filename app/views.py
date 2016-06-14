@@ -29,7 +29,6 @@ class ArticleDetailView(DetailView):
 
 class SearchResultsListView(ListView):
     model = Article
-    context_object_name = 'article'
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)
