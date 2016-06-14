@@ -11,11 +11,29 @@ class Category(models.Model):
         unique=True,
     )
 
+    def active_articles_list(self):
+        return self.article_set.filter(
+            is_active=True,
+            is_private=False
+        )
+
+    def get_absolute_url(self):
+        return reverse(
+            'CategoryDefaultView',
+            args=[
+            str(
+                self.slug
+                )
+            ]
+        )
+
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ['name']
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
 
 class Article(models.Model):
@@ -49,6 +67,16 @@ class Article(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
     )
+
+    def get_absolute_url(self):
+        return reverse(
+            'ArticleDefaultView',
+            args=[
+            str(
+                self.slug
+                )
+            ]
+        )
 
     def __str__(self):
         return self.name

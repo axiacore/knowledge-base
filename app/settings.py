@@ -88,6 +88,7 @@ MEDIA_URL = '/uploads/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
+
 # django-axes
 AXES_LOGIN_FAILURE_LIMIT = 3
 AXES_USE_USER_AGENT = True

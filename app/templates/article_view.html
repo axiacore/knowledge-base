@@ -1,0 +1,17 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <h1>
+        {{ article.name }}
+        <small>{{ article.updated_at }}</small>
+    </h1>
+    <p>
+        {{ article.content|safe }}
+    </p>
+    <div>
+        <ul>
+            <li>{{ article.upvotes }}</li>
+            <li>{{ article.downvotes }}</li>
+        </ul>
+    </div>
+{% endblock content %}

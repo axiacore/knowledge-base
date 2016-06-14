@@ -1,0 +1,15 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <h1>
+        {{ category.name }}
+    </h1>
+    <ul>
+        {% for article in category.article_set.all %}
+        <li>
+            <a href="{% url 'ArticleDefaultView' article.slug %}">{{ article.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock content %}
