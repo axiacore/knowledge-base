@@ -9,7 +9,6 @@ from .forms import SearchForm
 class HomeView(ListView):
     template_name = 'home.html'
     model = Category
-    context_object_name = 'category_list'
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
@@ -19,16 +18,18 @@ class HomeView(ListView):
 
 class CategoryDetailView(DetailView):
     model = Category
-    context_object_name = 'category'
 
 
 class ArticleDetailView(DetailView):
     model = Article
-    context_object_name = 'article'
 
 
 class SearchResultsListView(ListView):
     model = Article
+
+    def get_queryset(self):
+        search = self.request.GET.get('text', '')
+        return Article.objects.filter(content__search=search)
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)

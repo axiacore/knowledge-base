@@ -2,16 +2,16 @@
 
 {% block content %}
     {% include '_search_box.html' %}
-    {% for category in category_list %}
+    {% for category in object_list %}
         <h1>
             <a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a>
         </h1>
         <ul>
-            {% for article in category.active_articles_list|slice:":5" %}
-                <li>
-                    <a href="{% url 'article_detail' article.slug %}">{{ article.name }}</a>
-                </li>
-            {% endfor %}
+        {% for article in category.active_articles_list|slice:":5" %}
+            <li>
+                <a href="{% url 'article_detail' article.slug %}">{{ article.name }}</a>
+            </li>
+        {% endfor %}
         </ul>
         {% if category.active_articles_list.count > 5 %}
             <a href="{% url 'category_detail' category.slug %}">Ver todos</a>

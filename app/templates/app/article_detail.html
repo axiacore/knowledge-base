@@ -2,16 +2,16 @@
 
 {% block content %}
     <h1>
-        {{ article.name }}
-        <small>{{ article.updated_at }}</small>
+        {{ object.name }}
+        <small>{{ object.updated_at }}</small>
     </h1>
-    <p>
-        {{ article.content|safe }}
-    </p>
+    <article>
+        {{ object.content|safe }}
+    </article>
     <div>
         <ul>
-            <li>{{ article.upvotes }}</li>
-            <li>{{ article.downvotes }}</li>
+            <li>{{ object.upvotes }}</li>
+            <li>{{ object.downvotes }}</li>
         </ul>
     </div>
 {% endblock content %}
