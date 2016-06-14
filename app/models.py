@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 class Category(models.Model):
@@ -20,11 +21,7 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse(
             'CategoryDefaultView',
-            args=[
-            str(
-                self.slug
-                )
-            ]
+            args=[self.slug]
         )
 
     def __str__(self):
@@ -71,11 +68,7 @@ class Article(models.Model):
     def get_absolute_url(self):
         return reverse(
             'ArticleDefaultView',
-            args=[
-            str(
-                self.slug
-                )
-            ]
+            args=[self.slug]
         )
 
     def __str__(self):
