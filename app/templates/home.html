@@ -1,6 +1,7 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
+    {% include '_search_box.html' %}
     {% for category in category_list %}
         <h1>
             <a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a>
