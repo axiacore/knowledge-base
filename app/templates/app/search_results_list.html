@@ -4,9 +4,7 @@
     {% include '_search_box.html' %}
 
     {% for article in object_list %}
-        <h1>
-            {{ article.name }}
-        </h1>
+        <h1>{{ article.name }}</h1>
         <p>
             {{ article.content }}
         </p>
