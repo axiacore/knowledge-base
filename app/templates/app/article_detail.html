@@ -9,10 +9,44 @@
     <article>
         {{ object.content|safe }}
     </article>
-    <div>
+    <div class="vote-buttons">
         <ul>
-            <li>{{ object.upvotes }}</li>
-            <li>{{ object.downvotes }}</li>
+            <li class="vote-up">
+                <button type="button" {% if article.id in request.session.voted_article_list %}disabled{% endif %}>
+                {{ article.upvotes }}
+                </button>
+            </li>
+            <li class="vote-down">
+                <button type="button" {% if article.id in request.session.voted_article_list %}disabled{% endif %}>
+                {{ article.downvotes }}
+                </button>
+            </li>
         </ul>
     </div>
 {% endblock content %}
+{% block extra_js %}
+<script type="text/javascript">
+$(document).ready(function () {
+
+    // Upvote.
+    $('div.vote-buttons li.vote-up').click(function () {
+        $.get("{% url 'article_upvote' article.category.slug article.slug %}", function(response) {
+            $('li.vote-up').addClass('selected');
+            $('li.vote-down button').prop('disabled', true);
+        });
+
+        return false;
+    });
+
+    // Downvote.
+    $('div.vote-buttons li.vote-down').click(function () {
+        $.get("{% url 'article_downvote' article.category.slug article.slug %}downvote", function(response) {
+            $('li.vote-down').addClass('selected');
+            $('li.vote-up button').prop('disabled', true);
+        });
+
+        return false;
+    });
+});
+</script>
+{% endblock extra_js %}

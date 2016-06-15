@@ -1,8 +1,10 @@
 from django.contrib.postgres.search import SearchVector
+from django.db.models import F
 from django.views.generic import ListView
 from django.views.generic import DetailView
 from django.shortcuts import get_object_or_404
 from django.conf import settings
+from django.http import JsonResponse
 
 from .models import Category
 from .models import Article
@@ -64,3 +66,37 @@ class SearchResultsListView(ListView):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)
         context['form'] = SearchForm(self.request.GET)
         return context
+
+
+class ArticleUpVoteView(DetailView):
+    model = Article
+
+    def get(self, request, *args, **kwargs):
+        article = self.get_object()
+        voted_list = request.session.get('voted_article_list', [])
+
+        if article.id not in voted_list:
+            voted_list.append(article.id)
+            request.session['voted_article_list'] = voted_list
+            article.upvotes = F('upvotes') + 1
+            article.save()
+            return JsonResponse({'already_voted': False})
+
+        return JsonResponse({'already_voted': True})
+
+
+class ArticleDownVoteView(DetailView):
+    model = Article
+
+    def get(self, request, *args, **kwargs):
+        article = self.get_object()
+        voted_list = request.session.get('voted_article_list', [])
+
+        if article.id not in voted_list:
+            voted_list.append(article.id)
+            request.session['voted_article_list'] = voted_list
+            article.downvotes = F('downvotes') + 1
+            article.save()
+            return JsonResponse({'already_voted': False})
+
+        return JsonResponse({'already_voted': True})
