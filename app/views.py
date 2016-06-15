@@ -56,11 +56,11 @@ class ArticleUpVoteView(DetailView):
     def get(self, request, *args, **kwargs):
         article = self.get_object()
 
-        if not request.session.get('article_id', article.id):
+        if request.session.get('article_id') != article.id:
             request.session['article_id'] = article.id
             article.upvotes = F('upvotes') + 1
             article.save()
-        # article = self.get_object()
+            article = self.get_object()
         votes = article.upvotes
         data = [
             {
@@ -77,15 +77,15 @@ class ArticleDownVoteView(DetailView):
     def get(self, request, *args, **kwargs):
         article = self.get_object()
 
-        if not request.session.get('article_id', article.id):
+        if request.session.get('article_id') != article.id:
             request.session['article_id'] = article.id
-            article.upvotes = F('downvotes') + 1
+            article.downvotes = F('downvotes') + 1
             article.save()
-        # article = self.get_object()
+            article = self.get_object()
         votes = article.downvotes
         data = [
             {
-                'upvotes': votes
+                'downvotes': votes
             }
         ]
         return JsonResponse(data)
