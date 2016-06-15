@@ -2,11 +2,13 @@ from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.views import logout
 from django.utils.translation import ugettext as _
 
-from .views import HomeView
-from .views import CategoryDetailView
 from .views import ArticleDetailView
+from .views import CategoryDetailView
+from .views import HomeView
+from .views import LoginView
 from .views import SearchResultsListView
 from .views import ArticleUpVoteView
 from .views import ArticleDownVoteView
@@ -53,5 +55,17 @@ urlpatterns = [
         name='search_results_list'
     ),
 
+    url(
+        r'^login/$',
+        LoginView.as_view(),
+        name='login'
+    ),
+
+    url(
+        r'^logout/$',
+        logout,
+        {'next_page': '/'},
+        name='logout'
+    ),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
