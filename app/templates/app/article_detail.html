@@ -12,12 +12,12 @@
     <div class="vote-buttons">
         <ul>
             <li class="vote-up">
-                <button type="button" {% if voted %}disabled{% endif %}>
+                <button type="button" {% if article.id in request.session.voted_article_list %}disabled{% endif %}>
                 {{ article.upvotes }}
                 </button>
             </li>
             <li class="vote-down">
-                <button type="button" {% if voted %}disabled{% endif %}>
+                <button type="button" {% if article.id in request.session.voted_article_list %}disabled{% endif %}>
                 {{ article.downvotes }}
                 </button>
             </li>
