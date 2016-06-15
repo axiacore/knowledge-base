@@ -1,6 +1,9 @@
 from django.contrib.postgres.search import SearchVector
+from django.db.models import F
 from django.views.generic import ListView
 from django.views.generic import DetailView
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 from .models import Category
 from .models import Article
@@ -44,3 +47,45 @@ class SearchResultsListView(ListView):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)
         context['form'] = SearchForm()
         return context
+
+
+class ArticleUpVoteView(DetailView):
+
+    model = Article
+
+    def get(self, request, *args, **kwargs):
+        article = self.get_object()
+
+        if not request.session.get('article_id', article.id):
+            request.session['article_id'] = article.id
+            article.upvotes = F('upvotes') + 1
+            article.save()
+        # article = self.get_object()
+        votes = article.upvotes
+        data = [
+            {
+                'upvotes': votes
+            }
+        ]
+        return JsonResponse(data, safe=False)
+
+
+class ArticleDownVoteView(DetailView):
+
+    model = Article
+
+    def get(self, request, *args, **kwargs):
+        article = self.get_object()
+
+        if not request.session.get('article_id', article.id):
+            request.session['article_id'] = article.id
+            article.upvotes = F('downvotes') + 1
+            article.save()
+        # article = self.get_object()
+        votes = article.downvotes
+        data = [
+            {
+                'upvotes': votes
+            }
+        ]
+        return JsonResponse(data)

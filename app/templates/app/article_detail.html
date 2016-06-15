@@ -9,10 +9,34 @@
     <article>
         {{ object.content|safe }}
     </article>
-    <div>
+    <div class="vote-buttons">
         <ul>
-            <li>{{ object.upvotes }}</li>
-            <li>{{ object.downvotes }}</li>
+            <li class="vote-up">
+                <button type="button">{{ article.upvotes }}</button>
+            </li>
+            <li class="vote-down">
+                <button type="button">{{ article.downvotes }}</button>
+            </li>
         </ul>
     </div>
 {% endblock content %}
+{% block extra_js %}
+<script type="text/javascript">
+$(document).ready(function () {
+    $('div.vote-buttons li.vote-up').click(function (){
+        $.get("{% url 'article_detail' article.slug %}upvote", function(response) {
+            $('li.vote-up').addClass('selected');
+            $('li.vote-down button').prop('disabled', true);
+        });
+        return false;
+    });
+    $('div.vote-buttons li.vote-down').click(function (){
+        $.get("{% url 'article_detail' article.slug %}downvote", function(response) {
+            $('li.vote-down').addClass('selected');
+            $('li.vote-up button').prop('disabled', true);
+        });
+        return false;
+    });
+});
+</script>
+{% endblock extra_js %}

@@ -36,7 +36,10 @@ class ArticleAdmin(admin.ModelAdmin):
         'is_private',
     ]
 
-    list_editable = ['name', 'category']
+    list_editable = [
+        'name',
+        'category'
+    ]
 
     search_fields = [
         'name',

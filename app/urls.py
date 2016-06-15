@@ -7,6 +7,8 @@ from .views import HomeView
 from .views import CategoryDetailView
 from .views import ArticleDetailView
 from .views import SearchResultsListView
+from .views import ArticleUpVoteView
+from .views import ArticleDownVoteView
 
 
 admin.site.site_title = 'Knowledge Base'
@@ -28,6 +30,18 @@ urlpatterns = [
         r'^articulo/(?P<slug>[\w\-]+)/$',
         ArticleDetailView.as_view(),
         name='article_detail'
+    ),
+
+    url(
+        r'^articulo/(?P<slug>[\w\-]+)/upvote/$',
+        ArticleUpVoteView.as_view(),
+        name='article_upvote'
+    ),
+
+    url(
+        r'^articulo/(?P<slug>[\w\-]+)/downvote/$',
+        ArticleDownVoteView.as_view(),
+        name='article_downvote'
     ),
 
     url(
