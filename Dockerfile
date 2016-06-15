@@ -1,5 +1,10 @@
 FROM python:3.5.1
 
+RUN apt-get update \
+    && apt-get install -y gettext \
+    && apt-get autoremove -y --purge \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /tmp/
 RUN wget https://nodejs.org/dist/v6.1.0/node-v6.1.0-linux-x64.tar.xz \
     && tar xvf node-v6.1.0-linux-x64.tar.xz \

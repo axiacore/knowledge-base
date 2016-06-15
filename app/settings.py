@@ -1,24 +1,13 @@
 import os
+import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-SECRET_KEY = '05se#blzw_s^8cb7^2_c56o&88=jf&fawfm9$t!7@)t7fwp&sp'
-
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 PROJECT_APPS = [
     'app',
 ]
 
 INSTALLED_APPS = PROJECT_APPS + [
-    'axes',
-    'compressor',
-    'django_extensions',
-    'django_jenkins',
-    'raven.contrib.django.raven_compat',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -26,6 +15,12 @@ INSTALLED_APPS = PROJECT_APPS + [
     'django.contrib.messages',
     'django.contrib.postgres',
     'django.contrib.staticfiles',
+
+    'axes',
+    'compressor',
+    'django_extensions',
+    'django_jenkins',
+    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE = [
@@ -103,3 +98,8 @@ COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.rCSSMinFilter',
 ]
+
+if any(x in sys.argv for x in ('test', 'jenkins')):
+    from app.test_settings import *  # pylint: disable=W0401,W0614
+else:
+    from app.local_settings import *  # pylint: disable=W0401,W0614,E0611,F0401

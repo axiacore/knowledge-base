@@ -1,6 +1,6 @@
 # Knowledge Base
 
-TDB
+Knowledge Base written in Django.
 
 ## Running
 
@@ -28,3 +28,9 @@ To run any command on the app container you can do:
 To upgrade packages version run:
 
     $ docker exec -it knowledgebase_web_1 piprot --latest --verbatim
+
+
+## Update translation strings
+
+    $ docker exec -it knowledgebase_web_1 django-admin makemessages -l es_CO
+    $ docker exec -it knowledgebase_web_1 django-admin compilemessages
