@@ -1,3 +1,4 @@
+from django.contrib.postgres.search import SearchVector
 from django.views.generic import ListView
 from django.views.generic import DetailView
 
@@ -64,10 +65,18 @@ class ArticleDetailView(DetailView):
 
 class SearchResultsListView(ListView):
     model = Article
+    template_name = 'app/search_results_list.html'
 
     def get_queryset(self):
         search = self.request.GET.get('text', '')
-        return Article.objects.filter(content__search=search)
+        return Article.objects.annotate(
+            search=SearchVector(
+                'content',
+                'name'
+            )
+        ).filter(
+            search=search
+        )
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)

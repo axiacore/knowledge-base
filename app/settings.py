@@ -1,12 +1,7 @@
 import os
+import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-SECRET_KEY = '05se#blzw_s^8cb7^2_c56o&88=jf&fawfm9$t!7@)t7fwp&sp'
-
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 PROJECT_APPS = [
     'app',
@@ -18,6 +13,7 @@ INSTALLED_APPS = PROJECT_APPS + [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.postgres',
     'django.contrib.staticfiles',
 
     'axes',
@@ -65,8 +61,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
@@ -99,3 +98,8 @@ COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.rCSSMinFilter',
 ]
+
+if any(x in sys.argv for x in ('test', 'jenkins')):
+    from app.test_settings import *  # pylint: disable=W0401,W0614
+else:
+    from app.local_settings import *  # pylint: disable=W0401,W0614,E0611,F0401
