@@ -20,7 +20,7 @@ msgstr ""
 
 #: app/templates/home.html:6
 msgid "Knowledge Base"
-msgstr ""
+msgstr "Base de conocimiento"
 
 #: app/urls.py:38
 msgid "search"

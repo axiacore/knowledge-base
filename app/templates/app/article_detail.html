@@ -9,20 +9,18 @@
     <article>
         {{ object.content|safe }}
     </article>
+    {% if article.id in request.session.voted_article_list %}
     <div class="vote-buttons">
         <ul>
             <li class="vote-up">
-                <button type="button" {% if article.id in request.session.voted_article_list %}disabled{% endif %}>
-                {{ article.upvotes }}
-                </button>
+                <button type="button">{{ article.upvotes }}</button>
             </li>
             <li class="vote-down">
-                <button type="button" {% if article.id in request.session.voted_article_list %}disabled{% endif %}>
-                {{ article.downvotes }}
-                </button>
+                <button type="button">{{ article.downvotes }}</button>
             </li>
         </ul>
     </div>
+    {% endif %}
 {% endblock content %}
 {% block extra_js %}
 <script type="text/javascript">
