@@ -32,6 +32,20 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
 
+class ActiveArticlesManager(models.Manager):
+    def get_queryset(self):
+        return super(ActiveArticlesManager, self).get_queryset().filter(
+            is_active=True,
+        )
+
+
+class PublicArticlesManager(ActiveArticlesManager):
+    def get_queryset(self):
+        return super(PublicArticlesManager, self).get_queryset().filter(
+            is_private=False,
+        )
+
+
 class Article(models.Model):
     category = models.ForeignKey(Category)
 
@@ -63,6 +77,12 @@ class Article(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
     )
+
+    objects = models.Manager()
+
+    active = ActiveArticlesManager()
+
+    public = PublicArticlesManager()
 
     def get_absolute_url(self):
         return reverse(

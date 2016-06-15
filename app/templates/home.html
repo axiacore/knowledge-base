@@ -8,18 +8,21 @@
 
     {% include '_search_box.html' %}
 
-    {% for category in object_list %}
+    {% regroup object_list by category as category_list %}
+    {% for category in category_list %}
         <article>
-            <h2><a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a></h2>
+            <h2><a href="{% url 'category_detail' category.grouper.slug %}">{{ category.grouper.name }}</a></h2>
             <ul>
-            {% for article in category.active_articles_list|slice:":5" %}
+            {% for article in category.list|slice:":5" %}
                 <li>
                     <a href="{% url 'article_detail' article.slug %}">{{ article.name }}</a>
                 </li>
             {% endfor %}
             </ul>
-            {% if category.active_articles_list.count > 5 %}
-                <p><a href="{% url 'category_detail' category.slug %}">{% trans "View All" %}</a></p>
+            {% if category.list|length > 5 %}
+                <p><a href="{% url 'category_detail' category.grouper.slug %}">{% trans "View All" %}</a></p>
+            {% else %}
+                <h3>Less than 5</h3>
             {% endif %}
         </article>
     {% endfor %}
