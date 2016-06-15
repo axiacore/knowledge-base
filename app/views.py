@@ -1,9 +1,12 @@
 from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
-from django.contrib.postgres.search import SearchVector
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
+from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.search import SearchQuery
+from django.contrib.postgres.search import SearchRank
+from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models import F
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -60,17 +63,37 @@ class SearchResultsListView(ListView):
 
     def get_queryset(self):
         search = self.request.GET.get('text', '')
-        return Article.objects.annotate(
-            search=SearchVector(
-                'content',
-                'name',
-                config=settings.SEARCH_LANGS[
-                    settings.LANGUAGE
-                ]
+        vector = SearchVector(
+            'content',
+            weight='A',
+            config=settings.SEARCH_LANGS[
+                settings.LANGUAGE
+            ],
+            ) + SearchVector(
+            'name',
+            weight='B',
+            config=settings.SEARCH_LANGS[
+                settings.LANGUAGE
+            ],
             )
-        ).filter(
-            search=search
-        )[:20]
+        query = SearchQuery(search)
+        return Article.objects.annotate(
+            rank=SearchRank(
+                vector,
+                query
+                ),
+            similarity=TrigramSimilarity(
+                'name', search
+                ) + TrigramSimilarity(
+                'content', search
+                ),
+            ).filter(
+            rank__gte=0.3
+            ).filter(
+            similarity__gt=0.3
+            ).order_by(
+            '-similarity'
+            )[:20]
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)
