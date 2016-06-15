@@ -1,6 +1,7 @@
 Django==1.10a1
 
 ipython==5.0.0b3
+itsdangerous==0.24
 piprot==0.9.6
 psycopg2==2.6.1
 raven==5.20.0
