@@ -9,7 +9,15 @@ from .forms import SearchForm
 
 class HomeView(ListView):
     template_name = 'home.html'
-    model = Category
+    model = Article
+
+    def get_queryset(self):
+        """ Return a queryset based on whether the
+            user is authenticated or not.
+        """
+        if self.request.user.is_authenticated():
+            return Article.active.all()
+        return Article.public.all()
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
@@ -35,8 +43,8 @@ class SearchResultsListView(ListView):
             search=SearchVector(
                 'content',
                 'name'
-                )
-            ).filter(
+            )
+        ).filter(
             search=search
         )
 
