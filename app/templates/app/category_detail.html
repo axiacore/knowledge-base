@@ -1,0 +1,14 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <small><a href="{% url 'home' %}">Volver</a></small>
+    <h1>{{ category.name }}</h1>
+    <ul>
+    {% for article in object.article_set.all %}
+        <li>
+            <a href="{% url 'article_detail' article.category.slug article.slug %}">{{ article.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock content %}

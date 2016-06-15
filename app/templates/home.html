@@ -1,5 +1,30 @@
 {% extends 'layout/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Home" %}{% endblock %}
 
 {% block content %}
-<h1>Hola</h1>
+    <h1>{% trans "Knowledge Base" %}</h1>
+
+    {% include '_search_box.html' %}
+
+    {% regroup object_list by category as category_list %}
+    {% for category in category_list %}
+        <article>
+            <h2><a href="{% url 'category_detail' category.grouper.slug %}">{{ category.grouper.name }}</a></h2>
+            <ul>
+            {% for article in category.list|slice:":5" %}
+                <li>
+                    <a href="{% url 'article_detail' article.category.slug article.slug %}">{{ article.name }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+            {% if category.list|length > 5 %}
+                <p><a href="{% url 'category_detail' category.grouper.slug %}">{% trans "View All" %}</a></p>
+            {% else %}
+                <h3>Less than 5</h3>
+            {% endif %}
+        </article>
+    {% endfor %}
+
 {% endblock %}

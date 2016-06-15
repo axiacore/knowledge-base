@@ -11,6 +11,8 @@ class CategoryAdmin(admin.ModelAdmin):
         'name',
     ]
 
+    list_editable = ['name']
+
     prepopulated_fields = {'slug': ('name',)}
 
 
@@ -32,6 +34,11 @@ class ArticleAdmin(admin.ModelAdmin):
         'category',
         'is_active',
         'is_private',
+    ]
+
+    list_editable = [
+        'name',
+        'category'
     ]
 
     search_fields = [
