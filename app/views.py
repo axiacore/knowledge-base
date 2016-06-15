@@ -55,9 +55,14 @@ class ArticleUpVoteView(DetailView):
 
     def get(self, request, *args, **kwargs):
         article = self.get_object()
+        if request.session.get('voted_article_list'):
+            voted_list = request.session.get('voted_article_list', [])
+        else:
+            voted_list = []
 
-        if request.session.get('article_id') != article.id:
-            request.session['article_id'] = article.id
+        if article.id not in voted_list:
+            voted_list.append(article.id)
+            request.session['voted_article_list'] = voted_list
             article.upvotes = F('upvotes') + 1
             article.save()
             article = self.get_object()
@@ -76,9 +81,14 @@ class ArticleDownVoteView(DetailView):
 
     def get(self, request, *args, **kwargs):
         article = self.get_object()
+        if request.session.get('voted_article_list'):
+            voted_list = request.session.get('voted_article_list', [])
+        else:
+            voted_list = []
 
-        if request.session.get('article_id') != article.id:
-            request.session['article_id'] = article.id
+        if article.id not in voted_list:
+            voted_list.append(article.id)
+            request.session['voted_article_list'] = voted_list
             article.downvotes = F('downvotes') + 1
             article.save()
             article = self.get_object()

@@ -24,14 +24,14 @@
 <script type="text/javascript">
 $(document).ready(function () {
     $('div.vote-buttons li.vote-up').click(function (){
-        $.get("{% url 'article_detail' article.slug %}upvote", function(response) {
+        $.get("{% url 'article_upvote' article.slug %}", function(response) {
             $('li.vote-up').addClass('selected');
             $('li.vote-down button').prop('disabled', true);
         });
         return false;
     });
     $('div.vote-buttons li.vote-down').click(function (){
-        $.get("{% url 'article_detail' article.slug %}downvote", function(response) {
+        $.get("{% url 'article_downvote' article.slug %}downvote", function(response) {
             $('li.vote-down').addClass('selected');
             $('li.vote-up button').prop('disabled', true);
         });
