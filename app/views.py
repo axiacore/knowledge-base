@@ -42,7 +42,8 @@ class SearchResultsListView(ListView):
         return Article.objects.annotate(
             search=SearchVector(
                 'content',
-                'name'
+                'name',
+                config='spanish'
             )
         ).filter(
             search=search
@@ -50,5 +51,5 @@ class SearchResultsListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)
-        context['form'] = SearchForm()
+        context['form'] = SearchForm(self.request.GET)
         return context
