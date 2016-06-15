@@ -6,7 +6,7 @@
     <ul>
     {% for article in object.article_set.all %}
         <li>
-            <a href="{% url 'article_detail' article.slug %}">{{ article.name }}</a>
+            <a href="{% url 'article_detail' article.category.slug article.slug %}">{{ article.name }}</a>
         </li>
     {% endfor %}
     </ul>

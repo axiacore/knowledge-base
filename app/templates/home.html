@@ -15,7 +15,7 @@
             <ul>
             {% for article in category.list|slice:":5" %}
                 <li>
-                    <a href="{% url 'article_detail' article.slug %}">{{ article.name }}</a>
+                    <a href="{% url 'article_detail' article.category.slug article.slug %}">{{ article.name }}</a>
                 </li>
             {% endfor %}
             </ul>
