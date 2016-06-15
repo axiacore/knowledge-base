@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.utils.translation import ugettext as _
 
 from .views import HomeView
 from .views import CategoryDetailView
@@ -19,19 +20,23 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
 
     url(
-        r'^categoria/(?P<slug>[\w\-]+)/$',
+        r'^{0}/(?P<slug>[\w\-]+)/$'.format(
+            _('category')
+        ),
         CategoryDetailView.as_view(),
         name='category_detail'
     ),
 
     url(
-        r'^articulo/(?P<slug>[\w\-]+)/$',
+        r'^(?P<category_slug>[\w\-]+)/(?P<slug>[\w\-]+)/$',
         ArticleDetailView.as_view(),
         name='article_detail'
     ),
 
     url(
-        r'^search/$',
+        r'^{0}/$'.format(
+            _('search')
+        ),
         SearchResultsListView.as_view(),
         name='search_results_list'
     ),

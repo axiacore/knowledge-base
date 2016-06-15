@@ -1,6 +1,8 @@
 from django.contrib.postgres.search import SearchVector
 from django.views.generic import ListView
 from django.views.generic import DetailView
+from django.shortcuts import get_object_or_404
+from django.conf import settings
 
 from .models import Category
 from .models import Article
@@ -32,6 +34,13 @@ class CategoryDetailView(DetailView):
 class ArticleDetailView(DetailView):
     model = Article
 
+    def get_object(self):
+        return get_object_or_404(
+            Article,
+            slug=self.kwargs['slug'],
+            category__slug=self.kwargs['category_slug'],
+        )
+
 
 class SearchResultsListView(ListView):
     model = Article
@@ -43,7 +52,9 @@ class SearchResultsListView(ListView):
             search=SearchVector(
                 'content',
                 'name',
-                config='spanish'
+                config=settings.SEARCH_LANGS[
+                    settings.LANGUAGE
+                ]
             )
         ).filter(
             search=search

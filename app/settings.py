@@ -71,6 +71,11 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
+SEARCH_LANGS = {
+    'es': 'spanish',
+    'en': 'english',
+}
+
 TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
