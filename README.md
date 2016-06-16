@@ -2,6 +2,11 @@
 
 Knowledge Base written in Django.
 
+Copy the `local_settings.py.template` to `local_settings.py` and fill your
+information. Please take in mind `SITE_URL` should be the url where you are
+hosting this project, and `ALLOWED_DOMAINS` should be the domains that you
+allow to log in as users to see private articles.
+
 ## Running
 
 Just do:

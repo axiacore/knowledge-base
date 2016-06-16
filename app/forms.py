@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
@@ -9,12 +10,15 @@ class SearchForm(forms.Form):
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(label=_('Email'))
+    email = forms.EmailField(label=_('Email'), max_length=150)
 
     def clean_email(self):
-        email = self.cleaned_data.get('email')
+        email = self.cleaned_data.get('email').strip().lower()
 
-        if not User.objects.filter(email__iexact=email).exists():
-            raise ValidationError(_('This email is not registered'))
+        user, domain = email.split('@')
+        if domain not in settings.ALLOWED_DOMAINS:
+            raise ValidationError(_('This email is not allowed to login'))
+        elif not User.objects.filter(username=email).exists():
+            User.objects.create_user(username=email)
 
-        return email.strip().lower()
+        return email

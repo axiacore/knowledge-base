@@ -24,6 +24,25 @@ urlpatterns = [
 
     url(r'^markdownx/', include('markdownx.urls')),
 
+    url(
+        _(r'^search/$'),
+        SearchResultsListView.as_view(),
+        name='search_results_list'
+    ),
+
+    url(
+        _(r'^login/$'),
+        LoginView.as_view(),
+        name='login'
+    ),
+
+    url(
+        _(r'^logout/$'),
+        logout,
+        {'next_page': '/'},
+        name='logout'
+    ),
+
     url(r'^$', HomeView.as_view(), name='home'),
 
     url(
@@ -48,25 +67,6 @@ urlpatterns = [
         r'^(?P<category_slug>[\w\-]+)/(?P<slug>[\w\-]+)/downvote/$',
         ArticleDownVoteView.as_view(),
         name='article_downvote'
-    ),
-
-    url(
-        _(r'^search/$'),
-        SearchResultsListView.as_view(),
-        name='search_results_list'
-    ),
-
-    url(
-        _(r'^login/$'),
-        LoginView.as_view(),
-        name='login'
-    ),
-
-    url(
-        _(r'^logout/$'),
-        logout,
-        {'next_page': '/'},
-        name='logout'
     ),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

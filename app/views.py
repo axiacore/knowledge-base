@@ -39,7 +39,7 @@ class HomeView(ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        context = super(HomeView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['form'] = SearchForm()
         return context
 
@@ -173,7 +173,7 @@ class LoginView(FormView):
 
     def form_valid(self, form):
         email = form.cleaned_data['email']
-        user = User.objects.get(email__iexact=email)
+        user = User.objects.get(username=email)
         safe = URLSafeTimedSerializer(settings.SECRET_KEY)
         url = '{site}{path}?key={key}'.format(
             site=settings.SITE_URL,
