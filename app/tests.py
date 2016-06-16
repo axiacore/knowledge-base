@@ -1,25 +1,23 @@
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 from .models import Article
 from .models import Category
 
 
-class CategoryTest(TestCase):
-    def setUp(self):
-        self.category = Category.objects.create(
-            name='Category',
-            slug='category',
-        )
-
-
-class ArticleTest(TestCase):
+class AppTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='user', password='pass')
 
         self.category = Category.objects.create(
             name='Category',
             slug='category',
+        )
+
+        self.category_empty = Category.objects.create(
+            name='Category Empty',
+            slug='category-empty',
         )
 
         self.article_1 = Article.objects.create(
@@ -65,3 +63,18 @@ class ArticleTest(TestCase):
         self.client.login(username='user', password='pass')
         response = self.client.get(self.article_2.get_absolute_url())
         self.assertContains(response, self.article_2.name)
+
+    def test_inactive_article_view(self):
+        """Test an inactive article cannot be viewed"""
+        response = self.client.get(self.article_3.get_absolute_url())
+        self.assertEqual(response.status_code, 404)
+
+    def test_wrong_category(self):
+        """Test that an article url cannot access with a different category"""
+        response = self.client.get(
+            reverse('article_detail', args=[
+                self.category_empty.slug,
+                self.article_1.slug,
+            ])
+        )
+        self.assertEqual(response.status_code, 404)
