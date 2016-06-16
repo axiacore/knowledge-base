@@ -78,3 +78,42 @@ class AppTest(TestCase):
             ])
         )
         self.assertEqual(response.status_code, 404)
+
+    def test_category_view(self):
+        """Test a public article can be viewed in category view"""
+        response = self.client.get(self.category.get_absolute_url())
+        self.assertContains(response, self.category.name)
+        self.assertContains(response, self.article_1.name)
+        self.assertNotContains(response, self.article_2.name)
+        self.assertNotContains(response, self.article_3.name)
+
+    def test_category_view_authenticated(self):
+        """Test a private article cannot be viewed in category view by an
+        unauthenticated user
+        """
+        self.client.login(username='user', password='pass')
+        response = self.client.get(self.category.get_absolute_url())
+        self.assertContains(response, self.category.name)
+        self.assertContains(response, self.article_1.name)
+        self.assertContains(response, self.article_2.name)
+        self.assertNotContains(response, self.article_3.name)
+
+    def test_home_view(self):
+        """Test a public article can be viewed in home view"""
+        response = self.client.get(reverse('home'))
+        self.assertContains(response, self.category.name)
+        self.assertNotContains(response, self.category_empty.name)
+        self.assertContains(response, self.article_1.name)
+        self.assertNotContains(response, self.article_2.name)
+        self.assertNotContains(response, self.article_3.name)
+
+    def test_home_view_authenticated(self):
+        """Test a public article can be viewed in home view by an
+        unauthenticated user"""
+        self.client.login(username='user', password='pass')
+        response = self.client.get(reverse('home'))
+        self.assertContains(response, self.category.name)
+        self.assertNotContains(response, self.category_empty.name)
+        self.assertContains(response, self.article_1.name)
+        self.assertContains(response, self.article_2.name)
+        self.assertNotContains(response, self.article_3.name)
