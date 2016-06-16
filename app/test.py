@@ -18,8 +18,9 @@ class ArticleTest(TestCase):
     def setUp(self):
         self.category = Category.objects.create(
             name='Category A',
-            slug='catageory-a'
+            slug='catagory-a'
         )
+
         self.article_1 = Article.objects.create(
             category=self.category,
             name='Article one name',
@@ -27,7 +28,8 @@ class ArticleTest(TestCase):
             is_active=True,
             is_private=False,
             content='Article one content'
-            )
+        )
+
         self.article_2 = Article.objects.create(
             category=self.category,
             name='Article two name',
@@ -35,7 +37,8 @@ class ArticleTest(TestCase):
             is_active=True,
             is_private=True,
             content='Article twoo content'
-            )
+        )
+
         self.article_3 = Article.objects.create(
             category=self.category,
             name='Article three name',
@@ -43,4 +46,11 @@ class ArticleTest(TestCase):
             is_active=False,
             is_private=False,
             content='Article three content'
-            )
+        )
+
+        def test_unactive_article(self):
+            response = self.client.get(reverse(
+                    'article_detail',
+                    args=[self.article_3.slug]
+                ))
+            self.assertEqual(response.status_code, 400)
