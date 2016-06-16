@@ -4,29 +4,35 @@
 {% block title %}{{ object.name }}{% endblock %}
 
 {% block content %}
-    <small><a href="{{ object.category.get_absolute_url }}">{% trans "View more articles in" %} {{ object.category.name }}</a></small>
-    <h1>
-        {{ object.name }}
-        <small>{% trans "Last updated" %} {{ object.updated_at }}</small>
-    </h1>
-    {% if object.is_private %}
-    <blockquote>{% trans "This is private article. Only authenticated users can see it." %}</blockquote>
-    {% endif %}
-    <article>
-        {{ object.content_markdown|safe }}
-    </article>
-    {% if voted_article_list not in request.session or object.id not in request.session.voted_article_list %}
-    <div class="vote-buttons">
-        <ul>
-            <li class="vote-up">
-                <button type="button">{% trans "It worked for me" %}</button>
-            </li>
-            <li class="vote-down">
-                <button type="button">{% trans "It was not helpful" %}</button>
-            </li>
-        </ul>
+<section class="category-detail">
+    <div class="container">
+        <div class="breadcrumbs">
+            <small><a href="{% url 'home' %}">{% trans "Home" %}</a></small> > <small><a href="{{ object.category.get_absolute_url }}">{% trans "View more articles in" %} {{ object.category.name }}</a></small> > {{ object.name|truncatechars:30 }}
+        </div>
+        <h1>
+            {{ object.name }}
+            <small>{% trans "Last updated" %} {{ object.updated_at }}</small>
+        </h1>
+        {% if object.is_private %}
+        <blockquote>{% trans "This is private article. Only authenticated users can see it." %}</blockquote>
+        {% endif %}
+        <article>
+            {{ object.content_markdown|safe }}
+        </article>
+        {% if voted_article_list not in request.session or object.id not in request.session.voted_article_list %}
+        <div class="vote-buttons">
+            <ul>
+                <li class="vote-up">
+                    <button type="button">{% trans "It worked for me" %}</button>
+                </li>
+                <li class="vote-down">
+                    <button type="button">{% trans "It was not helpful" %}</button>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
+</section>
 {% endblock %}
 
 {% block extra_js %}
