@@ -64,35 +64,28 @@ class SearchResultsListView(ListView):
     def get_queryset(self):
         search = self.request.GET.get('text', '')
         vector = SearchVector(
-            'content',
+            'name',
             weight='A',
             config=settings.SEARCH_LANGS[
                 settings.LANGUAGE
             ],
-            ) + SearchVector(
-            'name',
+        ) + SearchVector(
+            'content',
             weight='B',
             config=settings.SEARCH_LANGS[
                 settings.LANGUAGE
             ],
-            )
+        )
         query = SearchQuery(search)
         return Article.objects.annotate(
             rank=SearchRank(
                 vector,
                 query
-                ),
-            similarity=TrigramSimilarity(
-                'name', search
-                ) + TrigramSimilarity(
-                'content', search
-                ),
+                )
             ).filter(
             rank__gte=0.3
-            ).filter(
-            similarity__gt=0.3
             ).order_by(
-            '-similarity'
+            '-rank'
             )[:20]
 
     def get_context_data(self, **kwargs):
