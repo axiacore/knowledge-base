@@ -4,8 +4,6 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-from django.contrib.postgres.operations import TrigramExtension
-from django.contrib.postgres.operations import UnaccentExtension
 
 
 class Migration(migrations.Migration):
@@ -55,6 +53,4 @@ class Migration(migrations.Migration):
             name='article',
             unique_together=set([('category', 'slug')]),
         ),
-        TrigramExtension(),
-        UnaccentExtension(),
     ]
