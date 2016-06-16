@@ -6,7 +6,6 @@ from django.core.urlresolvers import reverse
 from django.contrib.postgres.search import SearchVector
 from django.contrib.postgres.search import SearchQuery
 from django.contrib.postgres.search import SearchRank
-from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models import F
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
