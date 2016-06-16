@@ -6,7 +6,7 @@
     {% for article in object_list %}
         <h1>{{ article.name }}</h1>
         <p>
-            {{ article.content|truncatewords:20 }}
+            {{ article.content|truncatewords_html:20 }}
         </p>
         <a href="{% url 'article_detail' article.category.slug article.slug %}">Leer más...</a>
 
