@@ -14,12 +14,18 @@
   </head>
   <body>
     <header>
-        {% if user.is_authenticated %}<a href="{% url 'logout' %}">{% trans "Logout" %}</a>{% else %}<a href="{% url 'login' %}">{% trans "Login" %}</a>{% endif %}
+        <div class="container">
+            {% if user.is_authenticated %}<a href="{% url 'logout' %}" class="btn">{% trans "Logout" %}</a>{% else %}<a href="{% url 'login' %}" class="btn">{% trans "Login" %}</a>{% endif %}
+        </div>
     </header>
 
     <section>{% block content %}{% endblock %}</section>
 
-    <footer></footer>
+    <footer>
+        <div class="container">
+            © {% now 'Y' %} - {% trans "Product development by Axiacore" %}
+        </div>
+    </footer>
 
 {% compress js %}
     <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>

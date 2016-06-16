@@ -1,5 +1,7 @@
 {% load i18n %}
-<form action="{% url 'search_results_list' %}" method="get">
-    {{ form }}
-    <button type="submit">{% trans "Search" %}</button>
-</form>
+<div class="container">
+	<form action="{% url 'search_results_list' %}" method="get">
+	    {{ form }}
+	    <button type="submit">{% trans "Search" %}</button>
+	</form>
+</div>

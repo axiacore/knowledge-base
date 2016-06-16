@@ -1,0 +1,26 @@
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon"
+@import "../bower_components/neat/app/assets/stylesheets/neat"
+
+$max-width: 990px
+
+$mobile: new-breakpoint(min-width 540px)
+$tablet: new-breakpoint(min-width 768px)
+$desktop: new-breakpoint(min-width 994px)
+$desktop-xl: new-breakpoint(min-width 1200px)
+
+header
+	height: 80px
+
+	.btn
+		float: right
+
+footer
+	text-align: center
+	padding: 20px 0px
+
+.container
+	max-width: $max-width
+	margin: auto
+	padding: 0px 20px
+	@include clearfix
+
