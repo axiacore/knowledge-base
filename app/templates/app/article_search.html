@@ -1,4 +1,7 @@
 {% extends 'layout/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Search results" %}{% endblock %}
 
 {% block content %}
     {% include '_search_box.html' %}
@@ -6,11 +9,10 @@
     {% for article in object_list %}
         <h1>{{ article.name }}</h1>
         <p>
-            {{ article.content|truncatewords_html:20 }}
+            {{ article.content_markdown|truncatewords_html:20 }}
         </p>
         <a href="{% url 'article_detail' article.category.slug article.slug %}">Leer más...</a>
-
     {% empty %}
-    <p>No se encuentran resultados acordes con tu búsqueda, puedes abrir un nuevo tiquete con tu pregunta.</p>
+        <p>No se encuentran resultados acordes con tu búsqueda, puedes abrir un nuevo tiquete con tu pregunta.</p>
     {% endfor %}
 {% endblock %}

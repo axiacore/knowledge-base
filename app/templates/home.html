@@ -11,18 +11,16 @@
     {% regroup object_list by category as category_list %}
     {% for category in category_list %}
         <article>
-            <h2><a href="{% url 'category_detail' category.grouper.slug %}">{{ category.grouper.name }}</a></h2>
+            <h2><a href="{{ category.grouper.get_absolute_url }}">{{ category.grouper.name }}</a></h2>
             <ul>
             {% for article in category.list|slice:":5" %}
                 <li>
-                    <a href="{% url 'article_detail' article.category.slug article.slug %}">{{ article.name }}</a>
+                    <a href="{{ article.get_absolute_url }}">{{ article.name }}</a>
                 </li>
             {% endfor %}
             </ul>
             {% if category.list|length > 5 %}
-                <p><a href="{% url 'category_detail' category.grouper.slug %}">{% trans "View All" %}</a></p>
-            {% else %}
-                <h3>Less than 5</h3>
+                <p><a href="{{ category.grouper.get_absolute_url }}">{% trans "View All" %}</a></p>
             {% endif %}
         </article>
     {% endfor %}

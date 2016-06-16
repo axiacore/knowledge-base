@@ -82,9 +82,9 @@ class Article(models.Model):
 
     objects = models.Manager()
 
-    active = ActiveArticlesManager()
+    actives = ActiveArticlesManager()
 
-    public = PublicArticlesManager()
+    publics = PublicArticlesManager()
 
     @property
     def content_markdown(self):

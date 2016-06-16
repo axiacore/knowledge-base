@@ -5,11 +5,11 @@ from django.utils.translation import ugettext as _
 
 
 class SearchForm(forms.Form):
-    text = forms.CharField(label='Search', max_length=100)
+    text = forms.CharField(label=_('Search'), max_length=100)
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(label='Email')
+    email = forms.EmailField(label=_('Email'))
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

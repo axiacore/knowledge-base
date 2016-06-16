@@ -1,12 +1,13 @@
 from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
-from django.core.mail import send_mail
-from django.core.urlresolvers import reverse
-from django.contrib.postgres.search import SearchVector
 from django.contrib.postgres.search import SearchQuery
 from django.contrib.postgres.search import SearchRank
+from django.contrib.postgres.search import SearchVector
+from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
 from django.db.models import F
+from django.http import Http404
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
@@ -30,10 +31,12 @@ class HomeView(ListView):
     template_name = 'home.html'
 
     def get_queryset(self):
-        if self.request.user.is_authenticated():
-            return Article.active.all()
+        if self.request.user.is_authenticated:
+            queryset = Article.actives.all()
+        else:
+            queryset = Article.publics.all()
 
-        return Article.public.all()
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
@@ -44,48 +47,67 @@ class HomeView(ListView):
 class CategoryDetailView(DetailView):
     model = Category
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if self.request.user.is_authenticated:
+            context['article_list'] = Article.actives.filter(
+                category=self.get_object(),
+            )
+        else:
+            context['article_list'] = Article.publics.filter(
+                category=self.get_object(),
+            )
+
+        return context
+
 
 class ArticleDetailView(DetailView):
     model = Article
 
     def get_object(self):
-        return get_object_or_404(
-            Article,
-            slug=self.kwargs['slug'],
-            category__slug=self.kwargs['category_slug'],
-        )
+        if self.request.user.is_authenticated:
+            article = Article.actives.filter(
+                slug=self.kwargs['slug'],
+                category__slug=self.kwargs['category_slug'],
+            ).first()
+        else:
+            article = Article.publics.filter(
+                slug=self.kwargs['slug'],
+                category__slug=self.kwargs['category_slug'],
+            ).first()
+
+        if not article:
+            raise Http404
+
+        return article
 
 
 class SearchResultsListView(ListView):
     model = Article
-    template_name = 'app/search_results_list.html'
+    template_name = 'app/article_search.html'
 
     def get_queryset(self):
-        search = self.request.GET.get('text', '')
+        search_query = SearchQuery(self.request.GET.get('text', ''))
+
         vector = SearchVector(
             'name',
             weight='A',
-            config=settings.SEARCH_LANGS[
-                settings.LANGUAGE
-            ],
+            config=settings.SEARCH_LANGS[settings.LANGUAGE],
         ) + SearchVector(
             'content',
             weight='B',
-            config=settings.SEARCH_LANGS[
-                settings.LANGUAGE
-            ],
+            config=settings.SEARCH_LANGS[settings.LANGUAGE],
         )
-        query = SearchQuery(search)
-        return Article.objects.annotate(
-            rank=SearchRank(
-                vector,
-                query
-                )
-            ).filter(
-            rank__gte=0.3
-            ).order_by(
-            '-rank'
-            )[:20]
+
+        if self.request.user.is_authenticated:
+            queryset = Article.actives.all()
+        else:
+            queryset = Article.publics.all()
+
+        return queryset.annotate(
+            rank=SearchRank(vector, search_query)
+        ).filter(rank__gte=0.3).order_by('-rank')[:20]
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)
@@ -93,9 +115,7 @@ class SearchResultsListView(ListView):
         return context
 
 
-class ArticleUpVoteView(DetailView):
-    model = Article
-
+class ArticleUpVoteView(ArticleDetailView):
     def get(self, request, *args, **kwargs):
         article = self.get_object()
         voted_list = request.session.get('voted_article_list', [])
@@ -103,16 +123,16 @@ class ArticleUpVoteView(DetailView):
         if article.id not in voted_list:
             voted_list.append(article.id)
             request.session['voted_article_list'] = voted_list
+
             article.upvotes = F('upvotes') + 1
             article.save()
+
             return JsonResponse({'already_voted': False})
 
         return JsonResponse({'already_voted': True})
 
 
-class ArticleDownVoteView(DetailView):
-    model = Article
-
+class ArticleDownVoteView(ArticleDetailView):
     def get(self, request, *args, **kwargs):
         article = self.get_object()
         voted_list = request.session.get('voted_article_list', [])
@@ -120,8 +140,10 @@ class ArticleDownVoteView(DetailView):
         if article.id not in voted_list:
             voted_list.append(article.id)
             request.session['voted_article_list'] = voted_list
+
             article.downvotes = F('downvotes') + 1
             article.save()
+
             return JsonResponse({'already_voted': False})
 
         return JsonResponse({'already_voted': True})

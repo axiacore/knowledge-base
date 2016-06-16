@@ -1,14 +1,16 @@
 {% extends 'layout/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Category" %} {{ object.name }}{% endblock %}
 
 {% block content %}
-    <small><a href="{% url 'home' %}">Volver</a></small>
-    <h1>{{ category.name }}</h1>
+    <small><a href="{% url 'home' %}">{% trans "Home" %}</a></small>
+    <h1>{{ object.name }}</h1>
     <ul>
-    {% for article in object.article_set.all %}
+    {% for article in article_list %}
         <li>
-            <a href="{% url 'article_detail' article.category.slug article.slug %}">{{ article.name }}</a>
+            <a href="{{ article.get_absolute_url }}">{{ article.name }}</a>
         </li>
     {% endfor %}
     </ul>
-
-{% endblock content %}
+{% endblock %}

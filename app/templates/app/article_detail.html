@@ -9,6 +9,9 @@
         {{ object.name }}
         <small>{% trans "Last updated" %} {{ object.updated_at }}</small>
     </h1>
+    {% if object.is_private %}
+    <blockquote>{% trans "This is private article. Only authenticated users can see it." %}</blockquote>
+    {% endif %}
     <article>
         {{ object.content_markdown|safe }}
     </article>
