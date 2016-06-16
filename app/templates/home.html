@@ -4,25 +4,32 @@
 {% block title %}{% trans "Home" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Knowledge Base" %}</h1>
+<section class="home">
+    <div class="container">
+        <div class="search-box-container">
+            <h1>{% trans "Knowledge Base" %}</h1>
 
-    {% include '_search_box.html' %}
-
-    {% regroup object_list by category as category_list %}
-    {% for category in category_list %}
-        <article>
-            <h2><a href="{{ category.grouper.get_absolute_url }}">{{ category.grouper.name }}</a></h2>
-            <ul>
-            {% for article in category.list|slice:":5" %}
-                <li>
-                    <a href="{{ article.get_absolute_url }}">{{ article.name }}</a>
-                </li>
+            {% include '_search_box.html' %}
+        </div>
+        <div class="categories-container">
+            {% regroup object_list by category as category_list %}
+            {% for category in category_list %}
+                <div class="category">
+                    <h2><a href="{{ category.grouper.get_absolute_url }}">{{ category.grouper.name }}</a></h2>
+                    <ul>
+                    {% for article in category.list|slice:":5" %}
+                        <li>
+                            <a href="{{ article.get_absolute_url }}">{{ article.name }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    {% if category.list|length > 5 %}
+                        <p><a href="{{ category.grouper.get_absolute_url }}">{% trans "View All" %}</a></p>
+                    {% endif %}
+                </div>
             {% endfor %}
-            </ul>
-            {% if category.list|length > 5 %}
-                <p><a href="{{ category.grouper.get_absolute_url }}">{% trans "View All" %}</a></p>
-            {% endif %}
-        </article>
-    {% endfor %}
+        </div>
+    </div>
+</section>
 
 {% endblock %}

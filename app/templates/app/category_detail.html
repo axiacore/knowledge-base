@@ -4,13 +4,19 @@
 {% block title %}{% trans "Category" %} {{ object.name }}{% endblock %}
 
 {% block content %}
-    <small><a href="{% url 'home' %}">{% trans "Home" %}</a></small>
-    <h1>{{ object.name }}</h1>
-    <ul>
-    {% for article in article_list %}
-        <li>
-            <a href="{{ article.get_absolute_url }}">{{ article.name }}</a>
-        </li>
-    {% endfor %}
-    </ul>
+<section class="category-detail">
+    <div class="container">
+        <div class="breadcrumbs">
+            <small><a href="{% url 'home' %}">{% trans "Home" %}</a></small> > {{ object.name }}
+        </div>
+        <h1>{{ object.name }}</h1>
+        <ul>
+        {% for article in article_list %}
+            <li>
+                <a href="{{ article.get_absolute_url }}">{{ article.name }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</section>
 {% endblock %}
