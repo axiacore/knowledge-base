@@ -9,7 +9,7 @@ class CategoryTest(TestCase):
     def setUp(self):
         self.category = Category.objects.create(
             name='Category A',
-            slug='catageory-a'
+            slug='catagory-a'
         )
 
 
