@@ -6,7 +6,7 @@ from django.utils.translation import ugettext as _
 
 
 class SearchForm(forms.Form):
-    text = forms.CharField(label=_('Search'), max_length=100)
+    q = forms.CharField(label=_('Search'), max_length=100)
 
 
 class LoginForm(forms.Form):
