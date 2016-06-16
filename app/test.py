@@ -48,6 +48,29 @@ class ArticleTest(TestCase):
             content='Article three content'
         )
 
+        def test_public_article_view(self):
+            response = self.client.get(reverse(
+                    'article_detail',
+                    args=[self.article_1.slug]
+                ))
+            self.assertEqual(response.status_code, 200)
+
+        def test_unlogin_private_article_view(self):
+            response = self.client.get(reverse(
+                    'article_detail',
+                    args=[self.article_2.slug]
+                ))
+            self.assertEqual(response.status_code, 400)
+
+        def test_login_private_article_view(self):
+            self.client.login(username='admin', password='demo')
+            response = self.client.get(reverse(
+                    'article_detail',
+                    args=[self.article_2.slug]
+                ))
+            self.assertEqual(response.status_code, 200)
+
+
         def test_unactive_article(self):
             response = self.client.get(reverse(
                     'article_detail',
