@@ -1,34 +1,37 @@
 {% extends 'layout/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ object.name }}{% endblock %}
 
 {% block content %}
-    <small><a href="{% url 'category_detail' article.category.slug %}">Volver</a></small>
+    <small><a href="{{ object.category.get_absolute_url }}">{% trans "View more articles in" %} {{ object.category.name }}</a></small>
     <h1>
         {{ object.name }}
-        <small>{{ object.updated_at }}</small>
+        <small>{% trans "Last updated" %} {{ object.updated_at }}</small>
     </h1>
     <article>
-        {{ object.content|safe }}
+        {{ object.content_markdown|safe }}
     </article>
-    {% if article.id in request.session.voted_article_list %}
+    {% if voted_article_list not in request.session or object.id not in request.session.voted_article_list %}
     <div class="vote-buttons">
         <ul>
             <li class="vote-up">
-                <button type="button">{{ article.upvotes }}</button>
+                <button type="button">{% trans "It worked for me" %}</button>
             </li>
             <li class="vote-down">
-                <button type="button">{{ article.downvotes }}</button>
+                <button type="button">{% trans "It was not helpful" %}</button>
             </li>
         </ul>
     </div>
     {% endif %}
-{% endblock content %}
+{% endblock %}
+
 {% block extra_js %}
 <script type="text/javascript">
 $(document).ready(function () {
-
-    // Upvote.
+    // Upvote
     $('div.vote-buttons li.vote-up').click(function () {
-        $.get("{% url 'article_upvote' article.category.slug article.slug %}", function(response) {
+        $.get("{% url 'article_upvote' object.category.slug object.slug %}", function(response) {
             $('li.vote-up').addClass('selected');
             $('li.vote-down button').prop('disabled', true);
         });
@@ -36,9 +39,9 @@ $(document).ready(function () {
         return false;
     });
 
-    // Downvote.
+    // Downvote
     $('div.vote-buttons li.vote-down').click(function () {
-        $.get("{% url 'article_downvote' article.category.slug article.slug %}downvote", function(response) {
+        $.get("{% url 'article_downvote' object.category.slug object.slug %}", function(response) {
             $('li.vote-down').addClass('selected');
             $('li.vote-up button').prop('disabled', true);
         });
@@ -47,4 +50,4 @@ $(document).ready(function () {
     });
 });
 </script>
-{% endblock extra_js %}
+{% endblock %}

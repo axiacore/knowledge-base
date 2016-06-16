@@ -1,5 +1,7 @@
-from django.db import models
+from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.db import models
+from django.utils.module_loading import import_string
 
 
 class Category(models.Model):
@@ -84,10 +86,15 @@ class Article(models.Model):
 
     public = PublicArticlesManager()
 
+    @property
+    def content_markdown(self):
+        markdownify = import_string(settings.MARKDOWNX_MARKDOWNIFY_FUNCTION)
+        return markdownify(self.content)
+
     def get_absolute_url(self):
         return reverse(
             'article_detail',
-            args=[self.slug]
+            args=[self.category.slug, self.slug]
         )
 
     def __str__(self):
