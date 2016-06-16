@@ -19,6 +19,8 @@ JENKINS_TASKS = (
 
 PEP8_RCFILE = 'pep8.rc'
 
+LANGUAGE = 'en'
+
 
 class DisableMigrations(object):
     """
