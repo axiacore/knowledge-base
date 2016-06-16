@@ -1,8 +1,8 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
-from django.core.urlresolvers import reverse
 
-from .models import Category
 from .models import Article
+from .models import Category
 
 
 class CategoryTest(TestCase):
@@ -15,6 +15,8 @@ class CategoryTest(TestCase):
 
 class ArticleTest(TestCase):
     def setUp(self):
+        self.user = User.objects.create_user(username='user', password='pass')
+
         self.category = Category.objects.create(
             name='Category',
             slug='category',
@@ -47,31 +49,19 @@ class ArticleTest(TestCase):
             content='Article three content'
         )
 
-        def test_public_article_view(self):
-            response = self.client.get(reverse(
-                'article_detail',
-                args=[self.article_1.slug]
-            ))
-            self.assertEqual(response.status_code, 200)
+    def test_public_article_view(self):
+        """Test a public article can be viewed"""
+        response = self.client.get(self.article_1.get_absolute_url())
+        self.assertContains(response, self.article_1.name)
 
-        def test_unlogin_private_article_view(self):
-            response = self.client.get(reverse(
-                'article_detail',
-                args=[self.article_2.slug]
-            ))
-            self.assertEqual(response.status_code, 400)
+    def test_private_article_view(self):
+        """Test a private article cannot be viewed by an unauthenticated user
+        """
+        response = self.client.get(self.article_2.get_absolute_url())
+        self.assertEqual(response.status_code, 404)
 
-        def test_login_private_article_view(self):
-            self.client.login(username='admin', password='demo')
-            response = self.client.get(reverse(
-                'article_detail',
-                args=[self.article_2.slug]
-            ))
-            self.assertEqual(response.status_code, 200)
-
-        def test_inactive_article(self):
-            response = self.client.get(reverse(
-                'article_detail',
-                args=[self.article_3.slug]
-            ))
-            self.assertEqual(response.status_code, 400)
+    def test_private_article_view_authenticated(self):
+        """Test a private article can be viewed by an authenticated user"""
+        self.client.login(username='user', password='pass')
+        response = self.client.get(self.article_2.get_absolute_url())
+        self.assertContains(response, self.article_2.name)
