@@ -1,44 +1,46 @@
 from django.test import TestCase
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse
 
 from .models import Category
 from .models import Article
 
 
 class CategoryTest(TestCase):
-    """docstring for Category"""
     def setUp(self):
         self.category = Category.objects.create(
-            name='Clientes',
-            slug=slugify('Clientes')
+            name='Category A',
+            slug='catageory-a'
         )
 
 
-class ArticleTest(object):
-    """docstring for ArticleTest"""
+class ArticleTest(TestCase):
     def setUp(self):
+        self.category = Category.objects.create(
+            name='Category A',
+            slug='catageory-a'
+        )
         self.article_1 = Article.objects.create(
-            category=2,
-            name='Como hacer test en django',
-            slug=slugify('Como hacer test en django'),
+            category=self.category,
+            name='Article one name',
+            slug='article-one-name',
             is_active=True,
             is_private=False,
-            content='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae quibusdam incidunt, earum pariatur excepturi accusantium minus nulla dolorum laborum, quam natus quos consequatur. Provident, dolores accusamus reprehenderit, repellendus quas delectus. Publio Cornelio Scipion Africanus.'
+            content='Article one content'
             )
         self.article_2 = Article.objects.create(
-            category=2,
-            name='Como probar test en django',
-            slug=slugify('Como probar test en django'),
+            category=self.category,
+            name='Article two name',
+            slug='article-two-name',
             is_active=True,
             is_private=True,
-            content='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae quibusdam incidunt, earum pariatur excepturi accusantium minus nulla dolorum laborum, quam natus quos consequatur. Provident, dolores accusamus reprehenderit, repellendus quas delectus. Gaius Iulius Caesar.'
+            content='Article twoo content'
             )
         self.article_3 = Article.objects.create(
-            category=2,
-            name='Como no hacer test en django',
-            slug=slugify('Como no hacer test en django'),
+            category=self.category,
+            name='Article three name',
+            slug='article-three-name',
             is_active=False,
             is_private=False,
-            content='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae quibusdam incidunt, earum pariatur excepturi accusantium minus nulla dolorum laborum, quam natus quos consequatur. Provident, dolores accusamus reprehenderit, repellendus quas delectus. Gaius Marcius Coriolanus.'
+            content='Article three content'
             )
-
