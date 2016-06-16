@@ -2,38 +2,119 @@
 @import "../bower_components/neat/app/assets/stylesheets/neat"
 
 /* Variables */
+
+$white: #FFFFFF
+
+$black: #1C1D21
+
+$blue-primary: #0C9BE5
+$blue-secondary: #0A81BF
+
+$gray-primary: #ECECEC
+
 $max-width: 990px
 
 $tablet: new-breakpoint(min-width 768px)
 
-header
-	height: 80px
+body
+    font-family: 'Hind Vadodara', sans-serif
+    color: $black
 
-	.btn
-		float: right
+header
+    height: 80px
+    background-color: #f7f7f7
+
+    .btn
+        float: right
+        margin: 25px 0px
+
+    .logo
+        float: left
+        width: 150px
+        height: 60px
+        background-color: #ebebeb
+        margin: 10px 0px
 
 footer
-	text-align: center
-	padding: 20px 0px
+    text-align: center
+    padding: 20px 0px
 
 .container
-	max-width: $max-width
-	margin: auto
-	padding: 0px 20px
-	@include clearfix
+    max-width: $max-width
+    margin: auto
+    padding: 0px 20px
+    @include clearfix
+
+.btn
+    padding: 10px 20px
+    color: $white
+    text-decoration: none
+    text-transform: uppercase
+    font-weight: 700
+    font-size: 12px
+    min-width: 80px
+    text-align: center
+    line-height: 9px
+    @include border-top-radius(50px)
+    @include border-bottom-radius(50px)
+
+    &.fill
+        background-color: $blue-primary
+
+        &:hover
+            background-color: $blue-secondary
 
 .search-box-container
-	text-align: center
+    text-align: center
+    padding: 60px 0px
+    background-color: #f7f7f7
+    border-bottom: solid 1px $gray-primary
+    // border-top: solid 1px $gray-primary
+
+    form
+        max-width: 600px
+        margin: auto
+
+    label
+        display: none
+
+    input
+        border: none
+        padding: 13px 25px
+        border: 1px solid #BDC3C7
+        @include calc(width, "100% - 121px")
+        @include appearance(none)
+        @include border-left-radius(50px)
+
+        &:focus
+            outline: none
+
+    button
+        padding: 21.5px 35px
+        border: none
+        background-color: $blue-primary
+        margin-left: -5px
+        color: $white
+        text-transform: uppercase
+        font-weight: 700
+        font-size: 12px
+        vertical-align: top
+        line-height: 9px
+        cursor: pointer
+        @include border-right-radius(50px)
+
+        &:hover
+            background-color: $blue-secondary
 
 .home
-	.categories-container
-		@include clearfix
+    .categories-container
+        @include clearfix
 
-		.category
-			width: 100%
+        .category
+            width: 100%
 
-			@include media($tablet)
-				width: 50%
-				float: left
+            @include media($tablet)
+                width: 50%
+                float: left
 
 

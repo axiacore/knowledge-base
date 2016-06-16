@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,700" rel="stylesheet">
+
     <title>{% block title %}{% endblock %} | Knowledge Base</title>
 
 {% compress css %}
@@ -15,7 +17,10 @@
   <body>
     <header>
         <div class="container">
-            {% if user.is_authenticated %}<a href="{% url 'logout' %}" class="btn">{% trans "Logout" %}</a>{% else %}<a href="{% url 'login' %}" class="btn">{% trans "Login" %}</a>{% endif %}
+        <div class="logo">
+
+        </div>
+            {% if user.is_authenticated %}<a href="{% url 'logout' %}" class="btn">{% trans "Logout" %}</a>{% else %}<a href="{% url 'login' %}" class="btn fill">{% trans "Login" %}</a>{% endif %}
         </div>
     </header>
 

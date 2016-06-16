@@ -5,12 +5,11 @@
 
 {% block content %}
 <section class="home">
+    <div class="search-box-container">
+        <h1>{% trans "How can we help you today?" %}</h1>
+        {% include '_search_box.html' %}
+    </div>
     <div class="container">
-        <div class="search-box-container">
-            <h1>{% trans "Knowledge Base" %}</h1>
-
-            {% include '_search_box.html' %}
-        </div>
         <div class="categories-container">
             {% regroup object_list by category as category_list %}
             {% for category in category_list %}
