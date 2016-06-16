@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 
 from .models import Category
@@ -36,7 +35,7 @@ class ArticleTest(TestCase):
             slug='article-two-name',
             is_active=True,
             is_private=True,
-            content='Article twoo content'
+            content='Article two content'
         )
 
         self.article_3 = Article.objects.create(
