@@ -74,7 +74,7 @@ LANGUAGE_CODE = 'en-us'
 
 SEARCH_LANGS = {
     'es': 'spanish',
-    'en': 'english',
+    'en-us': 'english',
 }
 
 TIME_ZONE = 'America/Bogota'
@@ -92,6 +92,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/uploads/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 # django-axes
 AXES_LOGIN_FAILURE_LIMIT = 3

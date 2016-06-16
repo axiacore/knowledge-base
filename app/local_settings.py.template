@@ -11,3 +11,7 @@ EMAIL_HOST_PASSWORD = ''
 
 SITE_URL = 'http://docs.example.com'
 ALLOWED_DOMAINS = ['example.com']
+
+# RAVEN_CONFIG = {
+#     'dsn': '',
+# }
