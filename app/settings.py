@@ -18,6 +18,7 @@ INSTALLED_APPS = PROJECT_APPS + [
 
     'axes',
     'compressor',
+    'markdownx',
     'django_extensions',
     'django_jenkins',
     'raven.contrib.django.raven_compat',
@@ -103,6 +104,22 @@ COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.rCSSMinFilter',
 ]
+
+# django-markdownx
+MARKDOWNX_MARKDOWNIFY_FUNCTION = 'markdownx.utils.markdownify'
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.smart_strong',
+    'markdown.extensions.nl2br',
+    'markdown.extensions.sane_lists',
+    'markdown.extensions.smarty',
+]
+MARKDOWNX_URLS_PATH = '/markdownx/markdownify/'
+MARKDOWNX_UPLOAD_URLS_PATH = '/markdownx/upload/'
+MARKDOWNX_MEDIA_PATH = 'markdownx/'
+MARKDOWNX_UPLOAD_MAX_SIZE = 20480     # 2MB - maximum file size
+MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/jpeg', 'image/png']
+MARKDOWNX_IMAGE_MAX_SIZE = {'size': (800, 0), 'quality': 90}
+MARKDOWNX_EDITOR_RESIZABLE = True
 
 if any(x in sys.argv for x in ('test', 'jenkins')):
     from app.test_settings import *  # pylint: disable=W0401,W0614
