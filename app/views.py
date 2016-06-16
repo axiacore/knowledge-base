@@ -137,7 +137,7 @@ class LoginView(FormView):
             try:
                 user_id = serializer.loads(
                     request.GET.get('key'),
-                    max_age=60 * 2,     # Signature expires after 2 minutes
+                    max_age=60 * 2,  # Signature expires after 2 minutes
                 )
                 user = get_object_or_404(User, id=user_id)
                 user.backend = 'django.contrib.auth.backends.ModelBackend'
