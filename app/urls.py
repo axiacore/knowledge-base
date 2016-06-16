@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls import url
+from django.conf.urls import include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import logout
@@ -20,6 +21,8 @@ admin.site.site_header = 'Knowledge Base'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
+    url(r'^markdownx/', include('markdownx.urls')),
 
     url(r'^$', HomeView.as_view(), name='home'),
 

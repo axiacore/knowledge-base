@@ -1,7 +1,10 @@
 from django.contrib import admin
+from django.db import models
 
-from .models import Category
 from .models import Article
+from .models import Category
+
+from markdownx.widgets import AdminMarkdownxWidget
 
 
 @admin.register(Category)
@@ -46,17 +49,6 @@ class ArticleAdmin(admin.ModelAdmin):
         'content',
     ]
 
-    class Media:
-        css = {
-            'all': (
-                'css/admin/article.css',
-            ),
-        }
-
-        # Ignore pylint warning because the name really is 'js'
-        # pylint: disable=C0103
-        js = (
-            'bower_components/ace-builds/src-min/ace.js',
-            'bower_components/ace-builds/src-min/theme-chrome.js',
-            'js/admin-article.js',
-        )
+    formfield_overrides = {
+        models.TextField: {'widget': AdminMarkdownxWidget},
+    }
