@@ -53,6 +53,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'app.context_processors.logo_company',
             ],
         },
     },
@@ -73,7 +74,7 @@ DATABASES = {
 LANGUAGE_CODE = 'en-us'
 
 SEARCH_LANGS = {
-    'es': 'spanish',
+    'es-co': 'spanish',
     'en-us': 'english',
 }
 
@@ -121,7 +122,6 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
 ]
 MARKDOWNX_URLS_PATH = '/markdownx/markdownify/'
 MARKDOWNX_UPLOAD_URLS_PATH = '/markdownx/upload/'
-MARKDOWNX_MEDIA_PATH = 'markdownx/'
 MARKDOWNX_UPLOAD_MAX_SIZE = 20480     # 2MB - maximum file size
 MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/jpeg', 'image/png']
 MARKDOWNX_IMAGE_MAX_SIZE = {'size': (800, 0), 'quality': 90}

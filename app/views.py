@@ -88,7 +88,7 @@ class SearchResultsListView(ListView):
     template_name = 'app/article_search.html'
 
     def get_queryset(self):
-        search_query = SearchQuery(self.request.GET.get('text', ''))
+        search_query = SearchQuery(self.request.GET.get('q', ''))
 
         vector = SearchVector(
             'name',
