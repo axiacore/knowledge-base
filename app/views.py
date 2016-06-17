@@ -93,11 +93,11 @@ class SearchResultsListView(ListView):
         vector = SearchVector(
             'name',
             weight='A',
-            config=settings.SEARCH_LANGS[settings.LANGUAGE],
+            config=settings.SEARCH_LANGS[settings.LANGUAGE_CODE],
         ) + SearchVector(
             'content',
             weight='B',
-            config=settings.SEARCH_LANGS[settings.LANGUAGE],
+            config=settings.SEARCH_LANGS[settings.LANGUAGE_CODE],
         )
 
         if self.request.user.is_authenticated:
