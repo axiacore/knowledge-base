@@ -7,7 +7,7 @@
 <section class="category-detail">
     <div class="container">
         <div class="breadcrumbs">
-            <small><a href="{% url 'home' %}">{% trans "Home" %}</a></small> > <small><a href="{{ object.category.get_absolute_url }}">{% trans "View more articles in" %} {{ object.category.name }}</a></small> > {{ object.name|truncatechars:30 }}
+            <small><a href="{% url 'home' %}">{% trans "Home" %}</a></small> > <small><a href="{{ object.category.get_absolute_url }}">{% trans "View more articles in" %} {{ object.category.name }}</a></small> > {{ object.name }}
         </div>
         <h1>
             {{ object.name }}
