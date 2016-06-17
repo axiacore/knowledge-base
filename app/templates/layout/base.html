@@ -20,7 +20,7 @@
             <div class="logo">
                 <img src="{{ LOGO_COMPANY }}">
             </div>
-            {% if user.is_authenticated %}<a href="{% url 'logout' %}" class="btn">{% trans "Logout" %}</a>{% else %}<a href="{% url 'login' %}" class="btn">{% trans "Login" %}</a>{% endif %}
+            {% if user.is_authenticated %}<a href="{% url 'logout' %}" class="btn blue">{% trans "Logout" %}</a>{% else %}<a href="{% url 'login' %}" class="btn blue">{% trans "Login" %}</a>{% endif %}
         </div>
     </header>
 
@@ -28,7 +28,7 @@
 
     <footer>
         <div class="container">
-            © {% now 'Y' %} - {% trans "Product development by Axiacore" %}
+            © {% now 'Y' %} - <a href="https://axiacore.com/" target="_blank">{% trans "Product development by Axiacore" %}</a>
         </div>
     </footer>
 

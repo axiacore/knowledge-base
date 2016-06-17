@@ -12,6 +12,7 @@ $blue-secondary: #0A81BF
 
 $gray-primary: #ECECEC
 $gray-secondary: #f7f7f7
+$gray-tertiary: #31353D
 
 $max-width: 990px
 
@@ -34,12 +35,19 @@ header
         float: left
         width: 150px
         height: 60px
-        background-color: #ebebeb
         margin: 10px 0px
+        overflow: hidden
+
+        img
+        	width: 100%
 
 footer
     text-align: center
+    margin-top: 40px
     padding: 20px 0px
+    font-size: 14px
+    background-color: $gray-secondary
+    border-top: solid 1px $gray-primary
 
 .container
     max-width: $max-width
@@ -60,10 +68,11 @@ footer
     @include border-top-radius(50px)
     @include border-bottom-radius(50px)
 
-    &.fill
+    &.blue
         background-color: $blue-primary
 
         &:hover
+            color: $white
             background-color: $blue-secondary
 
 a
@@ -76,6 +85,9 @@ a
 
     &.title
         color: $black
+
+        &:hover
+            color: $gray-tertiary
 
 .search-box-container
     text-align: center
@@ -124,14 +136,21 @@ a
 
         .category
             width: 100%
-            padding: 30px 0px
+            padding: 60px 0px
+            border-bottom: 1px solid $gray-primary
+
+            @include media($tablet)
+                width: 40%
+                margin-right: 10%
+                float: left
+
+            h2
+                margin: 0px 0px 10px
 
             ul
                 list-style: none
                 padding: 0px
+                margin: 0px
 
-            @include media($tablet)
-                width: 50%
-                float: left
-
-
+                li
+                    margin-bottom: 5px
