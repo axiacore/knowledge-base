@@ -14,7 +14,11 @@
             {% regroup object_list by category as category_list %}
             {% for category in category_list %}
                 <div class="category">
-                    <h2><a href="{{ category.grouper.get_absolute_url }}">{{ category.grouper.name }}</a></h2>
+                    <h2>
+                        <a href="{{ category.grouper.get_absolute_url }}" class="title">
+                            {{ category.grouper.name }}
+                        </a>
+                    </h2>
                     <ul>
                     {% for article in category.list|slice:":5" %}
                         <li>

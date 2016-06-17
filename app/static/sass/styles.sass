@@ -11,6 +11,7 @@ $blue-primary: #0C9BE5
 $blue-secondary: #0A81BF
 
 $gray-primary: #ECECEC
+$gray-secondary: #f7f7f7
 
 $max-width: 990px
 
@@ -22,7 +23,8 @@ body
 
 header
     height: 80px
-    background-color: #f7f7f7
+    background-color: $gray-secondary
+    color: #445878
 
     .btn
         float: right
@@ -64,12 +66,22 @@ footer
         &:hover
             background-color: $blue-secondary
 
+a
+    color: $blue-primary
+    text-decoration: none
+    @include transition(all 0.2s ease-in-out)
+
+    &:hover
+        color: $blue-secondary
+
+    &.title
+        color: $black
+
 .search-box-container
     text-align: center
     padding: 60px 0px
-    background-color: #f7f7f7
+    background-color: $gray-secondary
     border-bottom: solid 1px $gray-primary
-    // border-top: solid 1px $gray-primary
 
     form
         max-width: 600px
@@ -112,6 +124,11 @@ footer
 
         .category
             width: 100%
+            padding: 30px 0px
+
+            ul
+                list-style: none
+                padding: 0px
 
             @include media($tablet)
                 width: 50%
