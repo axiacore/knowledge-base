@@ -11,6 +11,7 @@ EMAIL_HOST_PASSWORD = ''
 
 SITE_URL = 'http://docs.example.com'
 ALLOWED_DOMAINS = ['example.com']
+MARKDOWNX_MEDIA_PATH = 'example/'
 
 # RAVEN_CONFIG = {
 #     'dsn': '',
