@@ -4,4 +4,4 @@
 from django.conf import settings
 
 def logo_company(request):
-	return {"logo" : settings.LOGO_COMPANY}
+	return {'LOGO_COMPANY' : settings.LOGO_COMPANY}
