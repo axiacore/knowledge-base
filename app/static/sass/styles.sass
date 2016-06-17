@@ -9,12 +9,14 @@ $black: #1C1D21
 
 $blue-primary: #0C9BE5
 $blue-secondary: #0A81BF
+$blue-tertiary: #445878
 
 $gray-primary: #ECECEC
 $gray-secondary: #f7f7f7
 $gray-tertiary: #31353D
 
 $max-width: 990px
+$max-width-xs: 600px
 
 $tablet: new-breakpoint(min-width 768px)
 
@@ -51,6 +53,12 @@ footer
 
 .container
     max-width: $max-width
+    margin: auto
+    padding: 0px 20px
+    @include clearfix
+
+.container-xs
+    max-width: $max-width-xs
     margin: auto
     padding: 0px 20px
     @include clearfix
@@ -130,6 +138,12 @@ a
         &:hover
             background-color: $blue-secondary
 
+.breadcrumbs
+    padding: 10px
+    border-bottom: solid 1px $gray-primary
+    font-size: 13px
+    color: $blue-tertiary
+
 .home
     .categories-container
         @include clearfix
@@ -144,13 +158,19 @@ a
                 margin-right: 10%
                 float: left
 
-            h2
-                margin: 0px 0px 10px
+.home,
+.category-detail
+    h1, h2
+        margin: 0px 0px 10px
 
-            ul
-                list-style: none
-                padding: 0px
-                margin: 0px
+    ul
+        list-style: none
+        padding: 0px
+        margin: 0px
 
-                li
-                    margin-bottom: 5px
+        li
+            margin-bottom: 5px
+
+.category-detail
+    .container-xs
+        padding: 60px 20px
