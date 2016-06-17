@@ -119,6 +119,34 @@ a
         &:hover
             color: $gray-tertiary
 
+input
+    border: none
+    padding: 5px 25px
+    border: 1px solid #BDC3C7
+    @include calc(width, "100% - 121px")
+    @include appearance(none)
+    @include border-left-radius(50px)
+
+    &:focus
+        outline: none
+
+button
+    padding: 13.5px 35px
+    border: none
+    background-color: $blue-primary
+    margin-left: -5px
+    color: $white
+    text-transform: uppercase
+    font-weight: 700
+    font-size: 12px
+    vertical-align: top
+    line-height: 9px
+    cursor: pointer
+    @include border-right-radius(50px)
+
+    &:hover
+        background-color: $blue-secondary
+
 .search-box-container
     text-align: center
     padding: 60px 0px
@@ -133,65 +161,16 @@ a
         display: none
 
     input
-        border: none
         padding: 13px 25px
-        border: 1px solid #BDC3C7
-        @include calc(width, "100% - 121px")
-        @include appearance(none)
-        @include border-left-radius(50px)
-
-        &:focus
-            outline: none
 
     button
         padding: 21.5px 35px
-        border: none
-        background-color: $blue-primary
-        margin-left: -5px
-        color: $white
-        text-transform: uppercase
-        font-weight: 700
-        font-size: 12px
-        vertical-align: top
-        line-height: 9px
-        cursor: pointer
-        @include border-right-radius(50px)
-
-        &:hover
-            background-color: $blue-secondary
 
 .breadcrumbs
     padding: 10px
     border-bottom: solid 1px $gray-primary
     font-size: 13px
     color: $blue-tertiary
-
-.home
-    .categories-container
-        @include clearfix
-
-        .category
-            width: 100%
-            padding: 60px 0px
-            border-bottom: 1px solid $gray-primary
-
-            @include media($tablet)
-                width: 40%
-                margin-right: 10%
-                float: left
-
-.home,
-.category-detail
-    h1, h2
-        margin: 0px 0px 10px
-
-    ul
-        list-style: none
-        padding: 0px
-        margin: 0px
-
-        li
-            margin-bottom: 5px
 
 .info-container
         padding: 40px 0px
@@ -225,4 +204,41 @@ a
             &:first-child
                 margin-right: 15px
 
+.home
+    .categories-container
+        @include clearfix
 
+        .category
+            width: 100%
+            padding: 60px 0px
+            border-bottom: 1px solid $gray-primary
+
+            @include media($tablet)
+                width: 40%
+                margin-right: 10%
+                float: left
+
+.home,
+.category-detail,
+.login
+    h1, h2
+        margin: 0px 0px 10px
+
+    ul
+        list-style: none
+        padding: 0px
+        margin: 0px
+
+        li
+            margin-bottom: 5px
+
+.login
+    .info-container
+        text-align: center
+
+    label
+        display: none
+
+    form
+        margin: auto
+        max-width: 400px
