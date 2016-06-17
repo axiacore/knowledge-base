@@ -10,15 +10,17 @@
             <a href="{% url 'home' %}">{% trans "Home" %}</a> > {{ object.name }}
         </div>
     </div>
-    <div class="container-xs">
-        <h1>{{ object.name }}</h1>
-        <ul>
-        {% for article in article_list %}
-            <li>
-                <a href="{{ article.get_absolute_url }}">{{ article.name }}</a>
-            </li>
-        {% endfor %}
-        </ul>
+    <div class="info-container">
+        <div class="container-xs">
+            <h1>{{ object.name }}</h1>
+            <ul>
+            {% for article in article_list %}
+                <li>
+                    <a href="{{ article.get_absolute_url }}">{{ article.name }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
     </div>
 </section>
 {% endblock %}

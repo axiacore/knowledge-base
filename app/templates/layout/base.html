@@ -18,7 +18,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="{{ LOGO_COMPANY }}">
+                <a href="/"><img src="{{ LOGO_COMPANY }}"></a>
             </div>
             {% if user.is_authenticated %}<a href="{% url 'logout' %}" class="btn blue">{% trans "Logout" %}</a>{% else %}<a href="{% url 'login' %}" class="btn blue">{% trans "Login" %}</a>{% endif %}
         </div>
