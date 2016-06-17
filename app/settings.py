@@ -53,6 +53,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'app.context_processors.logo_company',
             ],
         },
     },
@@ -73,7 +74,7 @@ DATABASES = {
 LANGUAGE_CODE = 'en-us'
 
 SEARCH_LANGS = {
-    'es': 'spanish',
+    'es-co': 'spanish',
     'en-us': 'english',
 }
 

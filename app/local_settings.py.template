@@ -11,7 +11,23 @@ EMAIL_HOST_PASSWORD = ''
 
 SITE_URL = 'http://docs.example.com'
 ALLOWED_DOMAINS = ['example.com']
+MARKDOWNX_MEDIA_PATH = 'example/'
 
 # RAVEN_CONFIG = {
 #     'dsn': '',
 # }
+
+AWS_STORAGE_BUCKET_NAME = ''
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
+AWS_HEADERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'Cache-Control': 'max-age=94608000',
+}
+AWS_S3_SECURE_URLS = True
+AWS_PRELOAD_METADATA = True
+AWS_QUERYSTRING_AUTH = False
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+LOGO_COMPANY = ''
