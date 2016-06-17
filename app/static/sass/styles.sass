@@ -2,38 +2,253 @@
 @import "../bower_components/neat/app/assets/stylesheets/neat"
 
 /* Variables */
-$max-width: 990px
+
+$white: #FFFFFF
+
+$black: #1C1D21
+
+$red-primary: #F60A20
+$red-secondary: #D9042B
+
+$green-primary: #9AC836
+$green-secondary: #8CB202
+
+$blue-primary: #0C9BE5
+$blue-secondary: #0A81BF
+$blue-tertiary: #445878
+
+$gray-primary: #ECECEC
+$gray-secondary: #f7f7f7
+$gray-tertiary: #31353D
+
+$max-width: 840px
+$max-width-xs: 600px
 
 $tablet: new-breakpoint(min-width 768px)
 
-header
-	height: 80px
+body
+    font-family: 'Hind Vadodara', sans-serif
+    color: $black
+    min-width: 320px
 
-	.btn
-		float: right
+header
+    height: 80px
+    background-color: $gray-secondary
+    color: #445878
+
+    .btn
+        float: right
+        margin: 25px 0px
+
+    .logo
+        float: left
+        width: 150px
+        height: 60px
+        margin: 10px 0px
+        overflow: hidden
+
+        img
+        	width: 100%
 
 footer
-	text-align: center
-	padding: 20px 0px
+    text-align: center
+    margin-top: 40px
+    padding: 20px 0px
+    font-size: 14px
+    background-color: $gray-secondary
+    border-top: solid 1px $gray-primary
 
 .container
-	max-width: $max-width
-	margin: auto
-	padding: 0px 20px
-	@include clearfix
+    max-width: $max-width
+    margin: auto
+    padding: 0px 20px
+    @include clearfix
+
+.container-xs
+    max-width: $max-width-xs
+    margin: auto
+    padding: 0px 20px
+    @include clearfix
+
+.btn
+    padding: 10px 20px
+    color: $white
+    text-decoration: none
+    text-transform: uppercase
+    font-weight: 700
+    font-size: 12px
+    min-width: 80px
+    text-align: center
+    line-height: 9px
+    @include border-top-radius(50px)
+    @include border-bottom-radius(50px)
+    @include transition(all 0.3s ease-in-out)
+
+    &.blue
+        background-color: $blue-primary
+
+        &:hover
+            color: $white
+            background-color: $blue-secondary
+
+    &.green
+        background-color: $green-primary
+
+        &:hover
+            color: $white
+            background-color: $green-secondary
+
+    &.red
+        background-color: $red-primary
+
+        &:hover
+            color: $white
+            background-color: $red-secondary
+
+a
+    color: $blue-primary
+    text-decoration: none
+    @include transition(all 0.3s ease-in-out)
+
+    &:hover
+        color: $blue-secondary
+
+    &.title
+        color: $black
+
+        &:hover
+            color: $gray-tertiary
+
+input
+    border: none
+    padding: 5px 25px
+    border: 1px solid #BDC3C7
+    @include calc(width, "100% - 121px")
+    @include appearance(none)
+    @include border-left-radius(50px)
+
+    &:focus
+        outline: none
+
+button
+    padding: 13.5px 35px
+    border: none
+    background-color: $blue-primary
+    margin-left: -5px
+    color: $white
+    text-transform: uppercase
+    font-weight: 700
+    font-size: 12px
+    vertical-align: top
+    line-height: 9px
+    cursor: pointer
+    @include border-right-radius(50px)
+
+    &:hover
+        background-color: $blue-secondary
 
 .search-box-container
-	text-align: center
+    text-align: center
+    padding: 60px 0px
+    background-color: $gray-secondary
+    border-bottom: solid 1px $gray-primary
+
+    form
+        max-width: 600px
+        margin: auto
+
+    label
+        display: none
+
+    input
+        padding: 13px 25px
+
+    button
+        padding: 21.5px 35px
+
+.breadcrumbs
+    padding: 10px
+    border-bottom: solid 1px $gray-primary
+    font-size: 13px
+    color: $blue-tertiary
+
+.info-container
+        padding: 40px 0px
+
+.article-detail
+    h1
+        margin: 0px
+
+    h6
+        text-align: center
+        font-size: 14px
+        margin-bottom: 0px
+        border-top: 1px solid $gray-primary
+        padding-top: 20px
+
+    .last-update
+        color: $blue-tertiary
+        padding-bottom: 10px
+
+.vote-buttons
+    ul
+        list-style: none
+        padding: 0px
+        text-align: center
+
+        li
+            display: inline-block
+            cursor: pointer
+            margin-bottom: 20px
+
+            &:first-child
+                margin-right: 15px
 
 .home
-	.categories-container
-		@include clearfix
+    .categories-container
+        @include clearfix
 
-		.category
-			width: 100%
+        .category
+            width: 100%
+            padding: 60px 0px
+            border-bottom: 1px solid $gray-primary
 
-			@include media($tablet)
-				width: 50%
-				float: left
+            @include media($tablet)
+                width: 40%
+                margin-right: 10%
+                float: left
 
+.home,
+.category-detail,
+.login,
+.article-search
+    h1, h2
+        margin: 0px 0px 10px
 
+    ul
+        list-style: none
+        padding: 0px
+        margin: 0px
+
+        li
+            margin-bottom: 5px
+
+.login
+    .info-container
+        text-align: center
+
+    label
+        display: none
+
+    form
+        margin: auto
+        max-width: 400px
+
+.article-search
+    p
+        margin: 0px
+
+    .article-search-container
+        margin-bottom: 30px
+        padding-bottom: 30px
+        border-bottom: 1px solid $gray-primary

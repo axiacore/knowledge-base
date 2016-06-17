@@ -5,18 +5,22 @@
 
 {% block content %}
 <section class="category-detail">
-    <div class="container">
-        <div class="breadcrumbs">
-            <small><a href="{% url 'home' %}">{% trans "Home" %}</a></small> > {{ object.name }}
+    <div class="breadcrumbs"> 
+        <div class="container">
+            <a href="{% url 'home' %}">{% trans "Home" %}</a> > {{ object.name }}
         </div>
-        <h1>{{ object.name }}</h1>
-        <ul>
-        {% for article in article_list %}
-            <li>
-                <a href="{{ article.get_absolute_url }}">{{ article.name }}</a>
-            </li>
-        {% endfor %}
-        </ul>
+    </div>
+    <div class="info-container">
+        <div class="container-xs">
+            <h1>{{ object.name }}</h1>
+            <ul>
+            {% for article in article_list %}
+                <li>
+                    <a href="{{ article.get_absolute_url }}">{{ article.name }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
     </div>
 </section>
 {% endblock %}
