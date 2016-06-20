@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-14 21:05+0000\n"
+"POT-Creation-Date: 2016-06-20 09:47-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,125 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: app/templates/home.html:6
+#: app/forms.py:9
+#: app/templates/_search_box.html:4
+msgid "Search"
+msgstr "buscar"
+
+#: app/forms.py:13
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: app/forms.py:20
+msgid "This email is not allowed to login"
+msgstr "Este correo no tiene permitido iniciar sesión"
+
+#: app/templates/app/article_detail.html:10
+#: app/templates/app/article_search.html:10
+#: app/templates/app/category_detail.html:10
+#: app/templates/home.html:4
+#: app/templates/login.html:10
+msgid "Home"
+msgstr "Inicio"
+
+#: app/templates/app/article_detail.html:16
+msgid "Last updated"
+msgstr "Ultima actualización"
+
+#: app/templates/app/article_detail.html:18
+msgid "This is private article. Only authenticated users can see it."
+msgstr "Este es un artículo privado. Sólo usuarios autenticados pueden verlo."
+
+#: app/templates/app/article_detail.html:23
+msgid "Was this article helpful?"
+msgstr "Fue de ayuda este artículo?"
+
+#: app/templates/app/article_detail.html:28
+msgid "It worked for me"
+msgstr "Funcionó para mi"
+
+#: app/templates/app/article_detail.html:31
+msgid "It was not helpful"
+msgstr "No fue de utilidad"
+
+#: app/templates/app/article_search.html:4
+#: app/templates/app/article_search.html:10
+msgid "Search results"
+msgstr "Resultados de búsqueda"
+
+#: app/templates/app/article_search.html:15
+#: app/templates/home.html:9
+msgid "How can we help you today?"
+msgstr "Como podemos ayudarte el día de hoy?"
+
+#: app/templates/app/category_detail.html:4
+msgid "Category"
+msgstr "categoría"
+
+#: app/templates/home.html:30
+msgid "View All"
+msgstr "Ver todos"
+
+#: app/templates/layout/base.html:23
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: app/templates/layout/base.html:23
+#: app/templates/login.html:4
+#: app/templates/login.html:10
+#: app/templates/login.html:14
+#: app/templates/login_email.html:2
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: app/templates/layout/base.html:31
+msgid "Product development by Axiacore"
+msgstr "Producto desarrollado por Axiacore"
+
+#: app/templates/login.html:16
+msgid "Write your email address and we'll send you a link to log in"
+msgstr ""
+"Escribe tu dirección de correo electrónico y nosotros te enviaremos un "
+"enlace para iniciar sessión"
+
+#: app/templates/login.html:21
+msgid "Send"
+msgstr "Enviar"
+
+#: app/templates/login_email.html:3
+msgid "Please use this following link to log into the site"
+msgstr "Por favor usa el siguiente enlace para ingresar en el sitio"
+
+#: app/templates/login_email.html:4
+msgid "Click here to log in"
+msgstr "Haz 'click' aquí para iniciar sesión"
+
+#: app/urls.py:18
+#: app/urls.py:19
 msgid "Knowledge Base"
 msgstr "Base de conocimiento"
 
-#: app/urls.py:38
-msgid "search"
-msgstr "buscar"
+#: app/urls.py:28
+#, fuzzy
+msgid "^search/$"
+msgstr "^buscar/$"
 
-#: app/urls.py:24
-msgid "category"
-msgstr "categoria"
+#: app/urls.py:34
+msgid "^login/$"
+msgstr "^ingresar/$"
+
+#: app/urls.py:40
+msgid "^logout/$"
+msgstr "^salir/$"
+
+#: app/urls.py:49
+msgid "^(?P<slug>[\\w\\-]+)/$"
+msgstr ""
+
+#: app/urls.py:55
+msgid "^(?P<category_slug>[\\w\\-]+)/(?P<slug>[\\w\\-]+)/$"
+msgstr ""
+
+#: app/views.py:185
+msgid "Link to login into the Knowledge Base"
+msgstr "Enlace para ingresar en la Base de Conocimiento"
