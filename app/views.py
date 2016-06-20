@@ -87,7 +87,10 @@ class SearchResultsListView(ListView):
     template_name = 'app/article_search.html'
 
     def get_queryset(self):
-        search_query = SearchQuery(self.request.GET.get('q', ''))
+        search_query = SearchQuery(
+            self.request.GET.get('q', ''),
+            config=settings.SEARCH_LANGS[settings.LANGUAGE_CODE],
+        )
 
         vector = SearchVector(
             'name',
@@ -100,9 +103,7 @@ class SearchResultsListView(ListView):
         else:
             queryset = Article.publics.all()
 
-        return queryset.annotate(
-            search=vector,
-        ).filter(search=search_query)
+        return queryset.annotate(search=vector,).filter(search=search_query)
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)
