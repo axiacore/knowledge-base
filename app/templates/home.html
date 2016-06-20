@@ -5,17 +5,20 @@
 
 {% block content %}
 <section class="home">
+    <div class="search-box-container">
+        <h1>{% trans "How can we help you today?" %}</h1>
+        {% include '_search_box.html' %}
+    </div>
     <div class="container">
-        <div class="search-box-container">
-            <h1>{% trans "Knowledge Base" %}</h1>
-
-            {% include '_search_box.html' %}
-        </div>
         <div class="categories-container">
             {% regroup object_list by category as category_list %}
             {% for category in category_list %}
                 <div class="category">
-                    <h2><a href="{{ category.grouper.get_absolute_url }}">{{ category.grouper.name }}</a></h2>
+                    <h2>
+                        <a href="{{ category.grouper.get_absolute_url }}" class="title">
+                            {{ category.grouper.name }}
+                        </a>
+                    </h2>
                     <ul>
                     {% for article in category.list|slice:":5" %}
                         <li>

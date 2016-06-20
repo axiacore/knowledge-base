@@ -4,13 +4,13 @@
 {% block title %}{% trans "Login" %}{% endblock %}
 
 {% block content %}
-<section class="article-search">
-    <div class="container">
-
-    	<div class="breadcrumbs">
-            <small><a href="{% url 'home' %}">{% trans "Home" %}</a></small> > {% trans "Login" %}
+<section class="login">
+	<div class="breadcrumbs">
+		<div class="container">
+        	<a href="{% url 'home' %}">{% trans "Home" %}</a> > {% trans "Login" %}
         </div>
-        
+    </div>
+    <div class="container-xs info-container">
 	    <h1>{% trans "Login" %}</h1>
 
 	    <p>{% blocktrans %}Write your email address and we'll send you a link to log in{% endblocktrans %}.</p>
@@ -18,7 +18,7 @@
 	    <form action="" method="post">
 	        {% csrf_token %}
 	        {{ form }}
-	        <button type="submit">{% trans "Login" %}</button>
+	        <button type="submit">{% trans "Send" %}</button>
 	    </form>
  	</div>
 </section>

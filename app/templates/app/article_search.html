@@ -5,21 +5,24 @@
 
 {% block content %}
 <section class="article-search">
-    <div class="container">
-        <div class="search-box-container">
-            {% include '_search_box.html' %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <a href="{% url 'home' %}">{% trans "Home" %}</a> > {% trans "Search results" %}
         </div>
+    </div>
 
-        <div class="breadcrumbs">
-            <small><a href="{% url 'home' %}">{% trans "Home" %}</a></small> > {% trans "Search results" %}
-        </div>
+    <div class="search-box-container">
+        <h1>{% trans "How can we help you today?" %}</h1>
+        {% include '_search_box.html' %}
+    </div>
 
+    <div class="container info-container">
         {% for article in object_list %}
-            <h1>{{ article.name }}</h1>
-            <p>
-                {{ article.content_markdown|truncatewords_html:20|safe }}
-            </p>
-            <a href="{% url 'article_detail' article.category.slug article.slug %}">Leer más...</a>
+            <div class="article-search-container">
+                <h2>{{ article.name }}</h2>
+                <p>{{ article.content_markdown|truncatewords_html:20|safe }}</p>
+                <a href="{% url 'article_detail' article.category.slug article.slug %}">Leer más...</a>
+            </div>
         {% empty %}
             <p>No se encuentran resultados acordes con tu búsqueda, puedes abrir un nuevo tiquete con tu pregunta.</p>
         {% endfor %}
