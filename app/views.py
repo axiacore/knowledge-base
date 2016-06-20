@@ -2,7 +2,6 @@ from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.postgres.search import SearchQuery
-from django.contrib.postgres.search import SearchRank
 from django.contrib.postgres.search import SearchVector
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
@@ -92,11 +91,7 @@ class SearchResultsListView(ListView):
 
         vector = SearchVector(
             'name',
-            weight='A',
-            config=settings.SEARCH_LANGS[settings.LANGUAGE_CODE],
-        ) + SearchVector(
             'content',
-            weight='B',
             config=settings.SEARCH_LANGS[settings.LANGUAGE_CODE],
         )
 
@@ -106,8 +101,8 @@ class SearchResultsListView(ListView):
             queryset = Article.publics.all()
 
         return queryset.annotate(
-            rank=SearchRank(vector, search_query),
-        ).order_by('rank')
+            search=vector,
+        ).filter(search=search_query)
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)
