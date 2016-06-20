@@ -140,3 +140,12 @@ msgstr ""
 #: app/views.py:185
 msgid "Link to login into the Knowledge Base"
 msgstr "Enlace para ingresar en la Base de Conocimiento"
+
+#: app/templates/home.html:36
+msgid "There are no articles yet"
+msgstr "No encontramos articulos"
+
+#: app/templates/home.html:37
+msgid "Try comming back later"
+msgstr "Intenta volver de nuevo más tarde"
+
