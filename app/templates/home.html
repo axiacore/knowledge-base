@@ -31,6 +31,12 @@
                     {% endif %}
                 </div>
             {% endfor %}
+            {% if not category_list %}
+                <div class="no-articles">
+                    <h1>{% trans "There are no articles yet" %}</h1>
+                    <p>{% trans "Try comming back later" %}</p>
+                </div>
+            {% endif %}
         </div>
     </div>
 </section>

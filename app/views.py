@@ -2,7 +2,6 @@ from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.postgres.search import SearchQuery
-from django.contrib.postgres.search import SearchRank
 from django.contrib.postgres.search import SearchVector
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
