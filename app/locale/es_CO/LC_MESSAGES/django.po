@@ -67,7 +67,7 @@ msgstr "Resultados de búsqueda"
 #: app/templates/app/article_search.html:15
 #: app/templates/home.html:9
 msgid "How can we help you today?"
-msgstr "Como podemos ayudarte el día de hoy?"
+msgstr "¿Cómo podemos ayudarte el día de hoy?"
 
 #: app/templates/app/category_detail.html:4
 msgid "Category"
