@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 09:35-0500\n"
+"POT-Creation-Date: 2016-06-20 09:47-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,6 +80,7 @@ msgstr "Cerrar sesión"
 
 #: app/templates/layout/base.html:23 app/templates/login.html:4
 #: app/templates/login.html:10 app/templates/login.html:14
+#: app/templates/login_email.html:2
 msgid "Login"
 msgstr "Iniciar sesión"
 
@@ -89,15 +90,13 @@ msgstr "Producto desarrollado por Axiacore"
 
 #: app/templates/login.html:16
 msgid "Write your email address and we'll send you a link to log in"
-msgstr "Escribe tu dirección de correo electrónico y nosotros te enviaremos un enlace para iniciar sessión"
+msgstr ""
+"Escribe tu dirección de correo electrónico y nosotros te enviaremos un "
+"enlace para iniciar sessión"
 
 #: app/templates/login.html:21
 msgid "Send"
 msgstr "Enviar"
-
-#: app/templates/login_email.html:2
-msgid "Log in"
-msgstr ""
 
 #: app/templates/login_email.html:3
 msgid "Please use this following link to log into the site"
