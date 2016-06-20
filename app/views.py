@@ -107,7 +107,7 @@ class SearchResultsListView(ListView):
 
         return queryset.annotate(
             rank=SearchRank(vector, search_query)
-        ).filter(rank__gte=0.3).order_by('-rank')[:20]
+        ).order_by('-rank')[:20]
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsListView, self).get_context_data(**kwargs)
