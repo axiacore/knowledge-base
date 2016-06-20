@@ -32,7 +32,8 @@ msgstr "Este correo no tiene permitido iniciar sesión"
 
 #: app/templates/app/article_detail.html:10
 #: app/templates/app/article_search.html:10
-#: app/templates/app/category_detail.html:10 app/templates/home.html:4
+#: app/templates/app/category_detail.html:10
+#: app/templates/home.html:4
 #: app/templates/login.html:10
 msgid "Home"
 msgstr "Inicio"
@@ -62,7 +63,8 @@ msgstr "No fue de utilidad"
 msgid "Search results"
 msgstr "Resultados de búsqueda"
 
-#: app/templates/app/article_search.html:15 app/templates/home.html:9
+#: app/templates/app/article_search.html:15
+#: app/templates/home.html:9
 msgid "How can we help you today?"
 msgstr "Como podemos ayudarte el día de hoy?"
 
@@ -78,8 +80,10 @@ msgstr "Ver todos"
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: app/templates/layout/base.html:23 app/templates/login.html:4
-#: app/templates/login.html:10 app/templates/login.html:14
+#: app/templates/layout/base.html:23
+#: app/templates/login.html:4
+#: app/templates/login.html:10
+#: app/templates/login.html:14
 #: app/templates/login_email.html:2
 msgid "Login"
 msgstr "Iniciar sesión"
@@ -106,7 +110,8 @@ msgstr "Por favor usa el siguiente enlace para ingresar en el sitio"
 msgid "Click here to log in"
 msgstr "Haz 'click' aquí para iniciar sesión"
 
-#: app/urls.py:18 app/urls.py:19
+#: app/urls.py:18
+#: app/urls.py:19
 msgid "Knowledge Base"
 msgstr "Base de conocimiento"
 
