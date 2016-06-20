@@ -49,7 +49,7 @@ msgstr "Este es un artículo privado. Sólo usuarios autenticados pueden verlo."
 
 #: app/templates/app/article_detail.html:23
 msgid "Was this article helpful?"
-msgstr "Fue de ayuda este artículo?"
+msgstr "¿Fue de ayuda este artículo?"
 
 #: app/templates/app/article_detail.html:28
 msgid "It worked for me"
