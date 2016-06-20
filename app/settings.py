@@ -124,7 +124,7 @@ MARKDOWNX_URLS_PATH = '/markdownx/markdownify/'
 MARKDOWNX_UPLOAD_URLS_PATH = '/markdownx/upload/'
 MARKDOWNX_MEDIA_PATH = 'markdownx/'
 MARKDOWNX_UPLOAD_MAX_SIZE = 2097152     # 2MB - maximum file size
-MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/jpeg', 'image/png', 'image/gif']
+MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/jpeg', 'image/png', ]
 MARKDOWNX_IMAGE_MAX_SIZE = {'size': (800, 0), 'quality': 90}
 MARKDOWNX_EDITOR_RESIZABLE = True
 
