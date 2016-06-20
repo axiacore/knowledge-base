@@ -18,7 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: app/forms.py:9 app/templates/_search_box.html:4
+#: app/forms.py:9
+#: app/templates/_search_box.html:4
 msgid "Search"
 msgstr "buscar"
 
