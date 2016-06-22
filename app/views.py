@@ -35,7 +35,7 @@ class HomeView(ListView):
         else:
             queryset = Article.publics.all()
 
-        return queryset
+        return queryset.order_by('category')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
