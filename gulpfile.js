@@ -9,7 +9,7 @@ gulp.task('compile-sass', function() {
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('app/static/css/'))
-        .pipe(browserSync.stream());;
+        .pipe(browserSync.stream());
 });
 
 gulp.task('watch', function() {
