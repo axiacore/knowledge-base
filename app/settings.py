@@ -16,7 +16,7 @@ INSTALLED_APPS = PROJECT_APPS + [
     'django.contrib.postgres',
     'django.contrib.staticfiles',
 
-    'axes',
+    'axes.apps.AppConfig',
     'compressor',
     'markdownx',
     'django_extensions',
@@ -35,9 +35,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    # TypeError: object.__init__() takes no parameters
-    # 'axes.middleware.FailedLoginMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
