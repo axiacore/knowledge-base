@@ -155,7 +155,7 @@ msgstr "no es útil, adicionalmente dijo"
 
 #: app/templates/feedback_email.html:9
 msgid "To view the article follow"
-msgstr "Para ver el articulo sigue"
+msgstr "Para ver el artículo sigue"
 
 #: app/templates/feedback_email.html:9
 msgid "this link"
@@ -179,4 +179,4 @@ msgstr "Gracias por enviar tu mensaje!"
 
 #: app/templates/app/article_detail.html:39
 msgid "Sorry about that. Why wasn’t it helpful?"
-msgstr "¿Lo sentimos, por que no fue útil este artículo?"
+msgstr "Lo sentimos, ¿por qué no fue útil este artículo?"
