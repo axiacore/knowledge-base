@@ -129,14 +129,6 @@ msgstr "^ingresar/$"
 msgid "^logout/$"
 msgstr "^salir/$"
 
-#: app/urls.py:49
-msgid "^(?P<slug>[\\w\\-]+)/$"
-msgstr ""
-
-#: app/urls.py:55
-msgid "^(?P<category_slug>[\\w\\-]+)/(?P<slug>[\\w\\-]+)/$"
-msgstr ""
-
 #: app/views.py:185
 msgid "Link to login into the Knowledge Base"
 msgstr "Enlace para ingresar en la Base de Conocimiento"
@@ -149,3 +141,42 @@ msgstr "No hay articulos disponibles"
 msgid "Try comming back later"
 msgstr "Intenta volver de nuevo más tarde"
 
+#: app/templates/feedback_email.html:3
+msgid "Hi"
+msgstr "Hola"
+
+#: app/templates/feedback_email.html:5
+msgid "has said"
+msgstr "dijo"
+
+#: app/templates/feedback_email.html:5
+msgid "is not helfull, additionally they said"
+msgstr "no es útil, adicionalmente dijo"
+
+#: app/templates/feedback_email.html:9
+msgid "To view the article follow"
+msgstr "Para ver el articulo sigue"
+
+#: app/templates/feedback_email.html:9
+msgid "this link"
+msgstr "este link"
+
+#: app/views.py:140
+msgid "Thank you for sending your feedback!"
+msgstr "Gracias por enviar tu mensaje!"
+
+#: app/forms.py:30
+msgid "Email"
+msgstr "Correo"
+
+#: app/forms.py:35
+msgid "Description"
+msgstr "Descripción"
+
+#: app/templates/app/article_detail.html:35
+msgid "Thank you for your feedback!"
+msgstr "Gracias por enviar tu mensaje!"
+
+#: app/templates/app/article_detail.html:39
+msgid "Sorry about that. Why wasn’t it helpful?"
+msgstr "¿Lo sentimos, por que no fue útil este artículo?"

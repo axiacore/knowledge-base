@@ -27,10 +27,34 @@ $max-width-xs: 600px
 
 $tablet: new-breakpoint(min-width 768px)
 
+
 body
     font-family: 'Hind Vadodara', sans-serif
     color: $black
     min-width: 320px
+
+// Forms
+#{$all-text-inputs}
+    background-color: white
+    width: 100%
+    padding: .375rem .75rem
+    font-size: 1rem
+    line-height: 1.5
+    color: #55595c
+    background-color: #fff
+    background-image: none
+    border: 1px solid #ccc
+    border-radius: .25rem
+
+label
+    display: inline-block
+    margin-bottom: .5rem
+
+.form-group
+    margin-bottom: 15px
+
+.form-control
+    display: block
 
 header
     height: 80px
@@ -106,6 +130,11 @@ footer
             color: $white
             background-color: $red-secondary
 
+    &.disabled
+        opacity: .7
+        cursor: default
+        outline: none
+
 a
     color: $blue-primary
     text-decoration: none
@@ -120,16 +149,17 @@ a
         &:hover
             color: $gray-tertiary
 
-input
-    border: none
-    padding: 5px 25px
-    border: 1px solid #BDC3C7
-    @include calc(width, "100% - 121px")
-    @include appearance(none)
-    @include border-left-radius(50px)
+.search-box-container
+    input
+        border: none
+        padding: 5px 25px
+        border: 1px solid #BDC3C7
+        @include calc(width, "100% - 121px")
+        @include appearance(none)
+        @include border-left-radius(50px)
 
-    &:focus
-        outline: none
+        &:focus
+            outline: none
 
 button
     padding: 13.5px 35px
@@ -199,11 +229,13 @@ button
 
         li
             display: inline-block
-            cursor: pointer
             margin-bottom: 20px
 
             &:first-child
                 margin-right: 15px
+
+    .thank-you
+        text-align: center
 
 .home
     .categories-container
@@ -260,3 +292,26 @@ button
 
     p
         color: $gray-quaternary
+
+.feedback
+    max-width: 500px
+    margin-left: auto
+    margin-right: auto
+
+
+// Messages.
+.msg-container
+    color: white
+    text-align: center
+    padding: 15px 0
+
+    &.success
+        background-color: #9AC836
+
+// Utilities.
+.hide
+    display: none !important
+
+.errorlist
+    li
+        color: $red-primary

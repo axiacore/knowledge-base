@@ -13,6 +13,7 @@ from .views import CategoryDetailView
 from .views import HomeView
 from .views import LoginView
 from .views import SearchResultsListView
+from .views import ArticleDetailFeedbackView
 
 
 admin.site.site_title = _('Knowledge Base')
@@ -46,15 +47,21 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
 
     url(
-        _(r'^(?P<slug>[\w\-]+)/$'),
+        r'^(?P<slug>[\w\-]+)/$',
         CategoryDetailView.as_view(),
         name='category_detail'
     ),
 
     url(
-        _(r'^(?P<category_slug>[\w\-]+)/(?P<slug>[\w\-]+)/$'),
+        r'^(?P<category_slug>[\w\-]+)/(?P<slug>[\w\-]+)/$',
         ArticleDetailView.as_view(),
         name='article_detail'
+    ),
+
+    url(
+        r'^(?P<category_slug>[\w\-]+)/(?P<slug>[\w\-]+)/send_feedback/$',
+        ArticleDetailFeedbackView.as_view(),
+        name='article_feedback_form'
     ),
 
     url(

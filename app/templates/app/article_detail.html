@@ -20,17 +20,30 @@
             <article>
                 {{ object.content_markdown|safe }}
             </article>
-            <h6>{% trans "Was this article helpful?" %}</h6>
-            {% if voted_article_list not in request.session or object.id not in request.session.voted_article_list %}
+            {% if not already_voted %}
             <div class="vote-buttons">
+                <h6>{% trans "Was this article helpful?" %}</h6>
                 <ul>
                     <li class="vote-up">
-                        <div class="btn green">{% trans "It worked for me" %}</div>
+                        <button class="btn green">{% trans "It worked for me" %}</button>
                     </li>
                     <li class="vote-down">
-                        <div class="btn red">{% trans "It was not helpful" %}</div>
+                        <button class="btn red">{% trans "It was not helpful" %}</button>
                     </li>
                 </ul>
+                <div class="thank-you hide">
+                    <h3>{% trans "Thank you for your feedback!" %}</h3>
+                </div>
+
+                <div class="feedback {% if not display_form %}hide{% endif %}">
+                    <h4>{% trans "Sorry about that. Why wasn’t it helpful?" %}</h4>
+                    <form method="POST" action="{% url 'article_feedback_form' object.category.slug object.slug %}">
+                        {% csrf_token %}
+                        {{ feedback_form.as_p }}
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
+
             </div>
             {% endif %}
         </div>
@@ -41,21 +54,30 @@
 {% block extra_js %}
 <script type="text/javascript">
 $(document).ready(function () {
+
     // Upvote
-    $('div.vote-buttons li.vote-up').click(function () {
+    $('div.vote-buttons li.vote-up button').click(function () {
+        if ($(this).hasClass('disabled')) return;
+
         $.get("{% url 'article_upvote' object.category.slug object.slug %}", function(response) {
-            $('li.vote-up').addClass('selected');
-            $('li.vote-down button').prop('disabled', true);
+            $('.vote-buttons .thank-you').removeClass('hide');
+            $('.vote-buttons .feedback').remove();
+            $('.vote-buttons ul').remove();
+            $('.vote-buttons h6').remove();
         });
 
         return false;
     });
 
     // Downvote
-    $('div.vote-buttons li.vote-down').click(function () {
+    $('div.vote-buttons li.vote-down button').click(function () {
+        if ($(this).hasClass('disabled')) return;
+
         $.get("{% url 'article_downvote' object.category.slug object.slug %}", function(response) {
-            $('li.vote-down').addClass('selected');
-            $('li.vote-up button').prop('disabled', true);
+            $('.vote-buttons ul button').addClass('disabled');
+
+            // Show feedback form.
+            $('.vote-buttons .feedback').removeClass('hide');
         });
 
         return false;
