@@ -40,7 +40,7 @@
                     <form method="POST" action="{% url 'article_feedback_form' object.category.slug object.slug %}">
                         {% csrf_token %}
                         {{ feedback_form.as_p }}
-                        <input type="submit" value="Enviar">
+                        <input type="submit" value="Enviar" class="btn green">
                     </form>
                 </div>
 
