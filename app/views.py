@@ -18,7 +18,6 @@ from django.views.generic import ListView
 from django.shortcuts import render
 from django.contrib import messages
 from django.core.mail.message import EmailMessage
-from django.contrib.sites.models import Site
 
 from itsdangerous import BadSignature
 from itsdangerous import BadTimeSignature
@@ -116,7 +115,6 @@ class ArticleDetailFeedbackView(ArticleDetailMixin):
                 'display_form': True,
             })
 
-        base_url = 'http://{0}'.format(Site.objects.get_current().domain)
         email = form.cleaned_data['email']
         email_message = EmailMessage(
             subject=_('New feedback from article {0}'.format(obj.name)),
@@ -124,7 +122,7 @@ class ArticleDetailFeedbackView(ArticleDetailMixin):
                 'feedback_message': form.cleaned_data['description'],
                 'feedback_email': email,
                 'article': obj,
-                'base_url': base_url,
+                'base_url': settings.SITE_URL,
             }),
             to=[settings.SUPPORT_EMAIL],
             reply_to=[email],
