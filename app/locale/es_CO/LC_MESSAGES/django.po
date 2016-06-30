@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 09:47-0500\n"
+"POT-Creation-Date: 2016-06-30 15:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: app/forms.py:9
-#: app/templates/_search_box.html:4
+#: app/forms.py:10 app/templates/_search_box.html:4
 msgid "Search"
 msgstr "buscar"
 
-#: app/forms.py:13
+#: app/forms.py:14
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: app/forms.py:20
+#: app/forms.py:21
 msgid "This email is not allowed to login"
 msgstr "Este correo no tiene permitido iniciar sesión"
 
+#: app/forms.py:30
+msgid "Your email"
+msgstr "Tu correo"
+
+#: app/forms.py:35
+msgid "Tell us why it wasn't helpful"
+msgstr "¿Por qué no fue útil?"
+
 #: app/templates/app/article_detail.html:10
 #: app/templates/app/article_search.html:10
-#: app/templates/app/category_detail.html:10
-#: app/templates/home.html:4
+#: app/templates/app/category_detail.html:10 app/templates/home.html:4
 #: app/templates/login.html:10
 msgid "Home"
 msgstr "Inicio"
@@ -47,7 +53,7 @@ msgstr "Ultima actualización"
 msgid "This is private article. Only authenticated users can see it."
 msgstr "Este es un artículo privado. Sólo usuarios autenticados pueden verlo."
 
-#: app/templates/app/article_detail.html:23
+#: app/templates/app/article_detail.html:25
 msgid "Was this article helpful?"
 msgstr "¿Fue de ayuda este artículo?"
 
@@ -59,87 +65,30 @@ msgstr "Funcionó para mi"
 msgid "It was not helpful"
 msgstr "No fue de utilidad"
 
+#: app/templates/app/article_detail.html:35
+msgid "Thank you for your feedback!"
+msgstr "Gracias por enviar tu mensaje!"
+
+#: app/templates/app/article_detail.html:39
+msgid "Sorry about that. Why wasn’t it helpful?"
+msgstr "Lo sentimos, ¿por qué no fue útil este artículo?"
+
+#: app/templates/app/article_detail.html:43 app/templates/login.html:21
+msgid "Send"
+msgstr "Enviar"
+
 #: app/templates/app/article_search.html:4
 #: app/templates/app/article_search.html:10
 msgid "Search results"
 msgstr "Resultados de búsqueda"
 
-#: app/templates/app/article_search.html:15
-#: app/templates/home.html:9
+#: app/templates/app/article_search.html:15 app/templates/home.html:9
 msgid "How can we help you today?"
 msgstr "¿Cómo podemos ayudarte el día de hoy?"
 
 #: app/templates/app/category_detail.html:4
 msgid "Category"
 msgstr "categoría"
-
-#: app/templates/home.html:30
-msgid "View All"
-msgstr "Ver todos"
-
-#: app/templates/layout/base.html:23
-msgid "Logout"
-msgstr "Cerrar sesión"
-
-#: app/templates/layout/base.html:23
-#: app/templates/login.html:4
-#: app/templates/login.html:10
-#: app/templates/login.html:14
-#: app/templates/login_email.html:2
-msgid "Login"
-msgstr "Iniciar sesión"
-
-#: app/templates/layout/base.html:31
-msgid "Product development by Axiacore"
-msgstr "Producto desarrollado por Axiacore"
-
-#: app/templates/login.html:16
-msgid "Write your email address and we'll send you a link to log in"
-msgstr ""
-"Escribe tu dirección de correo electrónico y nosotros te enviaremos un "
-"enlace para iniciar sessión"
-
-#: app/templates/login.html:21
-msgid "Send"
-msgstr "Enviar"
-
-#: app/templates/login_email.html:3
-msgid "Please use this following link to log into the site"
-msgstr "Por favor usa el siguiente enlace para ingresar en el sitio"
-
-#: app/templates/login_email.html:4
-msgid "Click here to log in"
-msgstr "Haz 'click' aquí para iniciar sesión"
-
-#: app/urls.py:18
-#: app/urls.py:19
-msgid "Knowledge Base"
-msgstr "Base de conocimiento"
-
-#: app/urls.py:28
-#, fuzzy
-msgid "^search/$"
-msgstr "^buscar/$"
-
-#: app/urls.py:34
-msgid "^login/$"
-msgstr "^ingresar/$"
-
-#: app/urls.py:40
-msgid "^logout/$"
-msgstr "^salir/$"
-
-#: app/views.py:185
-msgid "Link to login into the Knowledge Base"
-msgstr "Enlace para ingresar en la Base de Conocimiento"
-
-#: app/templates/home.html:36
-msgid "There are no available articles"
-msgstr "No hay articulos disponibles"
-
-#: app/templates/home.html:37
-msgid "Try comming back later"
-msgstr "Intenta volver de nuevo más tarde"
 
 #: app/templates/feedback_email.html:3
 msgid "Hi"
@@ -161,22 +110,72 @@ msgstr "Para ver el artículo sigue"
 msgid "this link"
 msgstr "este link"
 
+#: app/templates/home.html:30
+msgid "View All"
+msgstr "Ver todos"
+
+#: app/templates/home.html:36
+msgid "There are no available articles"
+msgstr "No hay articulos disponibles"
+
+#: app/templates/home.html:37
+msgid "Try comming back later"
+msgstr "Intenta volver de nuevo más tarde"
+
+#: app/templates/layout/base.html:23
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: app/templates/layout/base.html:23 app/templates/login.html:4
+#: app/templates/login.html:10 app/templates/login.html:14
+#: app/templates/login_email.html:2
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: app/templates/layout/base.html:39
+msgid "Product development by Axiacore"
+msgstr "Producto desarrollado por Axiacore"
+
+#: app/templates/login.html:16
+msgid "Write your email address and we'll send you a link to log in"
+msgstr ""
+"Escribe tu dirección de correo electrónico y nosotros te enviaremos un "
+"enlace para iniciar sessión"
+
+#: app/templates/login_email.html:3
+msgid "Please use this following link to log into the site"
+msgstr "Por favor usa el siguiente enlace para ingresar en el sitio"
+
+#: app/templates/login_email.html:4
+msgid "Click here to log in"
+msgstr "Haz 'click' aquí para iniciar sesión"
+
+#: app/urls.py:19 app/urls.py:20
+msgid "Knowledge Base"
+msgstr "Base de conocimiento"
+
+#: app/urls.py:29
+#, fuzzy
+msgid "^search/$"
+msgstr "^buscar/$"
+
+#: app/urls.py:35
+msgid "^login/$"
+msgstr "^ingresar/$"
+
+#: app/urls.py:41
+msgid "^logout/$"
+msgstr "^salir/$"
+
+#: app/views.py:122
+#, python-brace-format
+msgid "New feedback from article {0}"
+msgstr ""
+
 #: app/views.py:140
 msgid "Thank you for sending your feedback!"
 msgstr "Gracias por enviar tu mensaje!"
 
-#: app/forms.py:30
-msgid "Your email"
-msgstr "Tu correo"
-
-#: app/forms.py:35
-msgid "Tell us why it wasn\'t helpful"
-msgstr "¿Por qué no fue útil?"
-
-#: app/templates/app/article_detail.html:35
-msgid "Thank you for your feedback!"
-msgstr "Gracias por enviar tu mensaje!"
-
-#: app/templates/app/article_detail.html:39
-msgid "Sorry about that. Why wasn’t it helpful?"
-msgstr "Lo sentimos, ¿por qué no fue útil este artículo?"
+#: app/views.py:255
+msgid "Link to login into the Knowledge Base"
+msgstr "Enlace para ingresar en la Base de Conocimiento"
