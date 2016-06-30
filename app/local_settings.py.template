@@ -31,5 +31,5 @@ AWS_QUERYSTRING_AUTH = False
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 LOGO_COMPANY = ''
+DEFAULT_FROM_EMAIL = ''
 SUPPORT_EMAIL = ''
-PROTOCOL = ''

@@ -7,7 +7,6 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.db.models import F
 from django.http import Http404
-from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
@@ -104,56 +103,40 @@ class ArticleDetailView(ArticleDetailMixin):
 
 
 class ArticleDetailFeedbackView(ArticleDetailMixin):
-
     def post(self, request, *args, **kwargs):
         """ Sends the feedback email to admin.
         """
         obj = self.get_object()
         form = FeedbackForm(request.POST)
+        if not form.is_valid():
+            return render(request, 'app/article_detail.html', {
+                'feedback_form': form,
+                'object': obj,
+                'already_voted': False,
+                'display_form': True,
+            })
 
-        if form.is_valid():
-            base_url = '{0}://{1}'.format(
-                settings.PROTOCOL,
-                Site.objects.get_current().domain,
-            )
-            email = form.cleaned_data['email']
+        base_url = 'http://{0}'.format(Site.objects.get_current().domain)
+        email = form.cleaned_data['email']
+        email_message = EmailMessage(
+            subject=_('New feedback from article {0}'.format(obj.name)),
+            body=render_to_string('feedback_email.html', {
+                'feedback_message': form.cleaned_data['description'],
+                'feedback_email': email,
+                'article': obj,
+                'base_url': base_url,
+            }),
+            to=[settings.SUPPORT_EMAIL],
+            reply_to=[email],
+        )
+        email_message.content_subtype = 'html'
+        email_message.send()
 
-            email_message = EmailMessage(
-                _('New feedback from article {0}'.format(obj.name)),
-                render_to_string(
-                    'feedback_email.html',
-                    {
-                        'feedback_message': form.cleaned_data['description'],
-                        'feedback_email': email,
-                        'article': obj,
-                        'base_url': base_url,
-                    }
-                ),
-                settings.SUPPORT_EMAIL,
-                [email, ],
-            )
-            email_message.content_subtype = 'html'
-            email_message.send()
-
-            messages.success(
-                request,
-                _('Thank you for sending your feedback!')
-            )
-            return HttpResponseRedirect(
-                reverse('article_detail', args=[obj.category.slug, obj.slug])
-            )
-
-        else:
-            return render(
-                request,
-                'app/article_detail.html',
-                {
-                    'feedback_form': FeedbackForm(request.POST),
-                    'object': obj,
-                    'already_voted': False,
-                    'display_form': True,
-                }
-            )
+        messages.success(
+            request,
+            _('Thank you for sending your feedback!')
+        )
+        return redirect('article_detail', args=[obj.category.slug, obj.slug])
 
 
 class SearchResultsListView(ListView):
