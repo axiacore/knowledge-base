@@ -136,7 +136,7 @@ class ArticleDetailFeedbackView(ArticleDetailMixin):
             request,
             _('Thank you for sending your feedback!')
         )
-        return redirect('article_detail', args=[obj.category.slug, obj.slug])
+        return redirect(obj)
 
 
 class SearchResultsListView(ListView):
