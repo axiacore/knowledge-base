@@ -26,14 +26,13 @@ class LoginForm(forms.Form):
 
 
 class FeedbackForm(forms.Form):
-
     email = forms.EmailField(
-        label=_('Email'),
+        label=_('Your email'),
         max_length=150
     )
 
     description = forms.CharField(
-        label=_('Description'),
+        label=_('Tell us why it wasn\'t useful'),
         max_length=500,
         widget=forms.Textarea(
             attrs={'rows': 5}

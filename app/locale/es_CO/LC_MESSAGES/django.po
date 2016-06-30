@@ -166,12 +166,12 @@ msgid "Thank you for sending your feedback!"
 msgstr "Gracias por enviar tu mensaje!"
 
 #: app/forms.py:30
-msgid "Email"
-msgstr "Correo"
+msgid "Your email"
+msgstr "Tu correo"
 
 #: app/forms.py:35
-msgid "Description"
-msgstr "Descripción"
+msgid "Tell us why it wasn\'t useful"
+msgstr "¿Por qué no fue útil?"
 
 #: app/templates/app/article_detail.html:35
 msgid "Thank you for your feedback!"
