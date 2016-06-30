@@ -15,6 +15,7 @@ INSTALLED_APPS = PROJECT_APPS + [
     'django.contrib.messages',
     'django.contrib.postgres',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'axes.apps.AppConfig',
     'compressor',
@@ -69,6 +70,7 @@ DATABASES = {
 }
 
 LANGUAGE_CODE = 'en-us'
+SITE_ID = 1
 
 SEARCH_LANGS = {
     'es-co': 'spanish',

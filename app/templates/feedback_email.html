@@ -1,0 +1,9 @@
+{% load i18n %}
+
+{% trans "Hi" %},
+
+{{ feedback_email }} {% trans "has said" %} <strong>{{ article.name }}</strong> {% trans "is not helfull, additionally they said" %}:
+
+{{ feedback_message }}
+
+{% trans "To view the article follow" %} <a href="{{ base_url }}{{ article.get_absolute_url }}">{% trans "this link" %}</a>.

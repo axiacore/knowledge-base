@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
+from django.forms import Textarea
 
 
 class SearchForm(forms.Form):
@@ -22,3 +23,18 @@ class LoginForm(forms.Form):
             User.objects.create_user(username=email)
 
         return email
+
+
+class FeedbackForm(forms.Form):
+    email = forms.EmailField(
+        label=_('Your email'),
+        max_length=150
+    )
+
+    description = forms.CharField(
+        label=_('Tell us why it wasn\'t helpful'),
+        max_length=500,
+        widget=forms.Textarea(
+            attrs={'rows': 5}
+        )
+    )
