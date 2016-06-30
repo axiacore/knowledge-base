@@ -170,7 +170,7 @@ msgid "Your email"
 msgstr "Tu correo"
 
 #: app/forms.py:35
-msgid "Tell us why it wasn\'t useful"
+msgid "Tell us why it wasn\'t helpful"
 msgstr "¿Por qué no fue útil?"
 
 #: app/templates/app/article_detail.html:35

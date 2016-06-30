@@ -32,7 +32,7 @@ class FeedbackForm(forms.Form):
     )
 
     description = forms.CharField(
-        label=_('Tell us why it wasn\'t useful'),
+        label=_('Tell us why it wasn\'t helpful'),
         max_length=500,
         widget=forms.Textarea(
             attrs={'rows': 5}
