@@ -253,7 +253,8 @@ button
 
 .home
     .categories-container
-        @include clearfix
+        @include display(flex)
+        @include flex-wrap(wrap)
 
         .category
             width: 100%
@@ -262,8 +263,8 @@ button
 
             @include media($tablet)
                 width: 40%
-                margin-right: 10%
-                float: left
+                margin-right: 5%
+                margin-left: 5%
 
 .home,
 .category-detail,
