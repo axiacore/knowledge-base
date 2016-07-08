@@ -132,6 +132,14 @@ footer
             color: $white
             background-color: $red-secondary
 
+    &.gray
+        background-color: $gray-primary
+        color: $gray-tertiary
+
+        &:hover
+            color: $white
+            background-color: $gray-tertiary
+
     &.disabled
         opacity: .7
         cursor: default
@@ -204,6 +212,10 @@ button
     border-bottom: solid 1px $gray-primary
     font-size: 13px
     color: $blue-tertiary
+
+.view-all-btn
+    display: inline-block
+    margin-top: 5px
 
 .info-container
         padding: 40px 0px
@@ -278,6 +290,17 @@ button
     form
         margin: auto
         max-width: 400px
+
+    input
+        border: none
+        padding: 5px 25px
+        border: 1px solid #BDC3C7
+        @include calc(width, "100% - 121px")
+        @include appearance(none)
+        @include border-left-radius(50px)
+
+        &:focus
+            outline: none
 
 .article-search
     p
