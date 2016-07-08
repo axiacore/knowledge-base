@@ -27,7 +27,7 @@
                     {% endfor %}
                     </ul>
                     {% if category.list|length > 5 %}
-                        <p><a href="{{ category.grouper.get_absolute_url }}">{% trans "View All" %}</a></p>
+                        <p><a class="btn gray view-all-btn" href="{{ category.grouper.get_absolute_url }}">{% trans "View All" %}</a></p>
                     {% endif %}
                 </div>
             {% endfor %}
