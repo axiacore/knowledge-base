@@ -5,21 +5,21 @@
 
 {% block content %}
 <section class="login">
-	<div class="breadcrumbs">
-		<div class="container">
-        	<a href="{% url 'home' %}">{% trans "Home" %}</a> > {% trans "Login" %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <a href="{% url 'home' %}">{% trans "Home" %}</a> > {% trans "Login" %}
         </div>
     </div>
     <div class="container-xs info-container">
-	    <h1>{% trans "Login" %}</h1>
+        <h1>{% trans "Login" %}</h1>
 
-	    <p>{% blocktrans %}Write your email address and we'll send you a link to log in{% endblocktrans %}.</p>
+        <p>{% blocktrans %}Write your email address and we'll send you a link to log in{% endblocktrans %}.</p>
 
-	    <form action="" method="post">
-	        {% csrf_token %}
-	        {{ form }}
-	        <button type="submit">{% trans "Send" %}</button>
-	    </form>
- 	</div>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">{% trans "Send" %}</button>
+        </form>
+    </div>
 </section>
 {% endblock %}

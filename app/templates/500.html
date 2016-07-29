@@ -1,0 +1,11 @@
+{% extends 'layout/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Server Error" %}{% endblock %}
+
+{% block content %}
+<section class="error">
+    <h1>{% trans "Server Error" %}</h1>
+    <p>{% trans "There was an unexpected error. Please try again later" %}.</p>
+</section>
+{% endblock %}
