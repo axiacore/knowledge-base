@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 15:00+0000\n"
+"POT-Creation-Date: 2016-07-30 20:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,6 +37,38 @@ msgstr "Tu correo"
 #: app/forms.py:35
 msgid "Tell us why it wasn't helpful"
 msgstr "¿Por qué no fue útil?"
+
+#: app/templates/404.html:4 app/templates/404.html:8
+msgid "Page not found"
+msgstr "Página no encontrada"
+
+#: app/templates/404.html:9
+msgid "The page you are looking for does not exists"
+msgstr "La página que estas buscando no existe"
+
+#: app/templates/404.html:10
+msgid "Go to the home page"
+msgstr "Ir a la página de inicio"
+
+#: app/templates/429.html:4
+msgid "Access Denied"
+msgstr "Acceso Denegado"
+
+#: app/templates/429.html:8
+msgid "Your access was denied"
+msgstr "Tu acceso ha sido denegado"
+
+#: app/templates/429.html:9
+msgid "Please contact your administrator"
+msgstr "Por favor contacta a tu administrador"
+
+#: app/templates/500.html:4 app/templates/500.html:8
+msgid "Server Error"
+msgstr "Error de Servidor"
+
+#: app/templates/500.html:9
+msgid "There was an unexpected error. Please try again later"
+msgstr "Ha ocurrido un error inesperado. Por favor intenta mas tarde"
 
 #: app/templates/app/article_detail.html:10
 #: app/templates/app/article_search.html:10
@@ -108,19 +140,23 @@ msgstr "Para ver el artículo sigue"
 
 #: app/templates/feedback_email.html:9
 msgid "this link"
-msgstr "este link"
+msgstr "este enlace"
 
 #: app/templates/home.html:30
 msgid "View All"
-msgstr "Ver todos"
+msgstr "Ver Todos"
 
 #: app/templates/home.html:36
 msgid "There are no available articles"
 msgstr "No hay articulos disponibles"
 
 #: app/templates/home.html:37
-msgid "Try comming back later"
-msgstr "Intenta volver de nuevo más tarde"
+msgid "Try again later"
+msgstr "Intenta más tarde"
+
+#: app/templates/layout/base.html:8 app/urls.py:19 app/urls.py:20
+msgid "Knowledge Base"
+msgstr "Base de conocimiento"
 
 #: app/templates/layout/base.html:23
 msgid "Logout"
@@ -132,9 +168,13 @@ msgstr "Cerrar sesión"
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: app/templates/layout/base.html:39
+#: app/templates/layout/base.html:37
 msgid "Product development by Axiacore"
-msgstr "Producto desarrollado por Axiacore"
+msgstr "Producto digital por Axiacore"
+
+#: app/templates/layout/base.html:37
+msgid "Help us improving"
+msgstr "Ayudanos a mejorar"
 
 #: app/templates/login.html:16
 msgid "Write your email address and we'll send you a link to log in"
@@ -148,14 +188,9 @@ msgstr "Por favor usa el siguiente enlace para ingresar en el sitio"
 
 #: app/templates/login_email.html:4
 msgid "Click here to log in"
-msgstr "Haz 'click' aquí para iniciar sesión"
-
-#: app/urls.py:19 app/urls.py:20
-msgid "Knowledge Base"
-msgstr "Base de conocimiento"
+msgstr "Click aquí para iniciar sesión"
 
 #: app/urls.py:29
-#, fuzzy
 msgid "^search/$"
 msgstr "^buscar/$"
 
@@ -167,15 +202,15 @@ msgstr "^ingresar/$"
 msgid "^logout/$"
 msgstr "^salir/$"
 
-#: app/views.py:122
+#: app/views.py:120
 #, python-brace-format
 msgid "New feedback from article {0}"
-msgstr ""
+msgstr "Nuevo comentario del articulo {0}"
 
-#: app/views.py:140
+#: app/views.py:135
 msgid "Thank you for sending your feedback!"
 msgstr "Gracias por enviar tu mensaje!"
 
-#: app/views.py:255
+#: app/views.py:236
 msgid "Link to login into the Knowledge Base"
 msgstr "Enlace para ingresar en la Base de Conocimiento"
