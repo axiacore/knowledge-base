@@ -4,12 +4,12 @@ boto==2.40
 ipython==5.0.0b3
 itsdangerous==0.24
 piprot==0.9.6
-psycopg2==2.6.1
-raven==5.20.0
+psycopg2==2.6.2
+raven==5.23.0
 
-django-axes==2.0.0
+django-axes==2.2.0
 django-compressor==2.0
 django-extensions==1.6.7
-django-jenkins==0.18.1
+django-jenkins==0.19.0
 django-markdownx==1.6
 django-storages==1.4.1

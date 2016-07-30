@@ -16,7 +16,7 @@ INSTALLED_APPS = PROJECT_APPS + [
     'django.contrib.postgres',
     'django.contrib.staticfiles',
 
-    'axes.apps.AppConfig',
+    'axes',
     'compressor',
     'markdownx',
     'django_extensions',

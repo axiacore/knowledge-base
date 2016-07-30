@@ -48,3 +48,8 @@ $ docker exec -it knowledgebase_web_1 piprot --latest --verbatim
 $ docker exec -it knowledgebase_web_1 django-admin makemessages -l es_CO
 $ docker exec -it knowledgebase_web_1 django-admin compilemessages
 ```
+
+## Improve
+
+Check out the project licence and report issues or fork this project at
+https://github.com/Axiacore/knowledge-base

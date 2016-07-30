@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,700" rel="stylesheet">
-
-    <title>{% block title %}{% endblock %} | Knowledge Base</title>
+    <title>{% block title %}{% endblock %} | {% trans "Knowledge Base" %}</title>
 
     <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
-
+    <link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,700" rel="stylesheet">
 {% compress css %}
     <link rel="stylesheet" href="{% static 'bower_components/normalize-css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -26,19 +24,17 @@
         </div>
     </header>
 
-    {% if messages %}
-        {% for message in messages %}
-            <div class="msg-container {% if message.tags %}{{ message.tags }}{% endif %}">
-                <span>{{ message }}</span>
-            </div>
-        {% endfor %}
-    {% endif %}
+{% for message in messages %}
+    <div class="msg-container {% if message.tags %}{{ message.tags }}{% endif %}">
+        <span>{{ message }}</span>
+    </div>
+{% endfor %}
 
     {% block content %}{% endblock %}
 
     <footer>
         <div class="container">
-            © {% now 'Y' %} - <a href="https://axiacore.com/" target="_blank">{% trans "Product development by Axiacore" %}</a>
+            © {% now 'Y' %} - <a href="https://axiacore.com/" target="_blank">{% trans "Product development by Axiacore" %}</a> - <a href="https://github.com/Axiacore/knowledge-base" target="_blank">{% trans "Help us improving" %}</a>
         </div>
     </footer>
 
