@@ -27,6 +27,18 @@ $max-width-xs: 600px
 
 $tablet: new-breakpoint(min-width 768px)
 
+@mixin min-height()
+    margin-bottom: -102px
+    @include calc(min-height, "100% - 80px")
+
+    &:after
+        content: ''
+        display: block
+        height: 102px
+
+html,
+body
+    height: 100%
 
 body
     font-family: 'Hind Vadodara', sans-serif
@@ -80,6 +92,7 @@ footer
     margin-top: 40px
     padding: 20px 0px
     font-size: 14px
+    height: 62px
     background-color: $gray-secondary
     border-top: solid 1px $gray-primary
 
@@ -224,6 +237,8 @@ button
         padding: 40px 0px
 
 .article-detail
+    @include min-height()
+    
     h1
         margin: 0px
 
@@ -273,6 +288,8 @@ button
 .category-detail,
 .login,
 .article-search
+    @include min-height()
+
     h1, h2
         margin: 0px 0px 10px
 
@@ -318,6 +335,7 @@ button
 .no-articles
     text-align: center
     margin-top: 50px
+    width: 100%
 
     p
         color: $gray-quaternary
@@ -343,3 +361,13 @@ button
 .errorlist
     li
         color: $red-primary
+
+.error
+    text-align: center
+    padding: 50px 0px
+    @include min-height()
+
+    img
+        width: 100%
+        max-width: 600px
+        margin-bottom: 20px
