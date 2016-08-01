@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-30 20:56+0000\n"
+"POT-Creation-Date: 2016-08-01 22:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,8 @@ msgstr "Página no encontrada"
 msgid "The page you are looking for does not exists"
 msgstr "La página que estas buscando no existe"
 
-#: app/templates/404.html:10
+#: app/templates/404.html:11 app/templates/429.html:11
+#: app/templates/500.html:11
 msgid "Go to the home page"
 msgstr "Ir a la página de inicio"
 
