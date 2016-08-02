@@ -14,11 +14,13 @@ INSTALLED_APPS = PROJECT_APPS + [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.postgres',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
 
     'axes',
     'compressor',
     'markdownx',
+    'robots',
     'django_extensions',
     'django_jenkins',
     'raven.contrib.django.raven_compat',
@@ -82,6 +84,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+SITE_ID = 1
 
 STATIC_URL = '/static/'
 
