@@ -25,10 +25,10 @@
                 <h6>{% trans "Was this article helpful?" %}</h6>
                 <ul>
                     <li class="vote-up">
-                        <button class="btn green">{% trans "It worked for me" %}</button>
+                        <button class="btn green">{% trans "Yes " %}({{object.upvotes}})</button>
                     </li>
                     <li class="vote-down">
-                        <button class="btn red">{% trans "It was not helpful" %}</button>
+                        <button class="btn red">{% trans "No " %}({{object.downvotes}})</button>
                     </li>
                 </ul>
                 <div class="thank-you hide">

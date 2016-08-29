@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-01 22:40+0000\n"
+"POT-Creation-Date: 2016-08-29 13:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,12 +91,12 @@ msgid "Was this article helpful?"
 msgstr "¿Fue de ayuda este artículo?"
 
 #: app/templates/app/article_detail.html:28
-msgid "It worked for me"
-msgstr "Funcionó para mi"
+msgid "Yes "
+msgstr "Si "
 
 #: app/templates/app/article_detail.html:31
-msgid "It was not helpful"
-msgstr "No fue de utilidad"
+msgid "No "
+msgstr "No "
 
 #: app/templates/app/article_detail.html:35
 msgid "Thank you for your feedback!"
@@ -191,15 +191,15 @@ msgstr "Por favor usa el siguiente enlace para ingresar en el sitio"
 msgid "Click here to log in"
 msgstr "Click aquí para iniciar sesión"
 
-#: app/urls.py:29
+#: app/urls.py:31
 msgid "^search/$"
 msgstr "^buscar/$"
 
-#: app/urls.py:35
+#: app/urls.py:37
 msgid "^login/$"
 msgstr "^ingresar/$"
 
-#: app/urls.py:41
+#: app/urls.py:43
 msgid "^logout/$"
 msgstr "^salir/$"
 
