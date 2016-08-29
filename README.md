@@ -1,5 +1,7 @@
 # Knowledge Base
 
+[![Code Climate](https://codeclimate.com/github/Axiacore/knowledge-base/badges/gpa.svg)](https://codeclimate.com/github/Axiacore/knowledge-base)
+
 Knowledge Base written in Django.
 
 Copy `local_settings.py.template` to `local_settings.py` and fill in your
