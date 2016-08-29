@@ -26,7 +26,7 @@ def analytics(request):
     Enable analytics script if debug is False
     """
     script = ''
-    if settings.DEBUG:
+    if not settings.DEBUG:
         template = Template(TRACKING_CODE)
         script = mark_safe(
             template.substitute(
