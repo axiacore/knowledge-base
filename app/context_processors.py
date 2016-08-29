@@ -34,7 +34,7 @@ def analytics(request):
     Enable analytics script if debug is False
     """
     script = ''
-    if settings.DEBUG:
+    if not settings.DEBUG:
         script = GA_CODE % (
             settings.GOOGLE_ANALYTICS_CODE,
             settings.TAG_MANAGER_ID,
