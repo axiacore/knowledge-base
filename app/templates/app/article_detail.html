@@ -66,6 +66,8 @@ $(document).ready(function () {
             $('.vote-buttons h6').remove();
         });
 
+        // Track event in Analytics.
+        ga('send', 'event', 'click', 'upvote', window.location.href);
         return false;
     });
 
@@ -80,8 +82,11 @@ $(document).ready(function () {
             $('.vote-buttons .feedback').removeClass('hide');
         });
 
+        // Track event in Analytics.
+        ga('send', 'event', 'click', 'downvote', window.location.href);
         return false;
     });
+
 });
 </script>
 {% endblock %}
