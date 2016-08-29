@@ -67,7 +67,7 @@ $(document).ready(function () {
         });
 
         // Track event in Analytics.
-        ga('send', 'event', 'votes', 'upvote');
+        ga('send', 'event', 'click', 'upvote', window.location.href);
         return false;
     });
 
@@ -83,7 +83,7 @@ $(document).ready(function () {
         });
 
         // Track event in Analytics.
-        ga('send', 'event', 'votes', 'downvote');
+        ga('send', 'event', 'click', 'downvote', window.location.href);
         return false;
     });
 
