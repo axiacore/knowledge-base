@@ -25,7 +25,7 @@ urlpatterns = [
 
     url(r'^markdownx/', include('markdownx.urls')),
 
-    url(r'^robots\.txt$', include('robots.urls')),
+    url(r'^robots\.txt', include('robots.urls')),
 
     url(
         _(r'^search/$'),
