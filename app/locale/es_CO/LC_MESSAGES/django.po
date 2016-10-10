@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-29 14:08+0000\n"
+"POT-Creation-Date: 2016-10-10 20:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,8 +43,14 @@ msgid "Page not found"
 msgstr "Página no encontrada"
 
 #: app/templates/404.html:9
-msgid "The page you are looking for does not exists"
-msgstr "La página que estas buscando no existe"
+#, fuzzy
+#| msgid "The page you are looking for does not exists"
+msgid ""
+"The page you are looking for does not exists or don't have permissions to "
+"access, try to log in"
+msgstr ""
+"La página que estas buscando no existe, o no tienes permiso para acceder, "
+"intenta iniciando sesión"
 
 #: app/templates/404.html:11 app/templates/429.html:11
 #: app/templates/500.html:11
@@ -80,7 +86,7 @@ msgstr "Inicio"
 
 #: app/templates/app/article_detail.html:16
 msgid "Last updated"
-msgstr "Ultima actualización"
+msgstr "Última actualización"
 
 #: app/templates/app/article_detail.html:18
 msgid "This is private article. Only authenticated users can see it."
@@ -159,23 +165,23 @@ msgstr "Intenta más tarde"
 msgid "Knowledge Base"
 msgstr "Base de conocimiento"
 
-#: app/templates/layout/base.html:23
+#: app/templates/layout/base.html:25
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: app/templates/layout/base.html:23 app/templates/login.html:4
+#: app/templates/layout/base.html:25 app/templates/login.html:4
 #: app/templates/login.html:10 app/templates/login.html:14
 #: app/templates/login_email.html:2
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: app/templates/layout/base.html:37
+#: app/templates/layout/base.html:39
 msgid "Product development by Axiacore"
 msgstr "Producto digital por Axiacore"
 
-#: app/templates/layout/base.html:37
+#: app/templates/layout/base.html:39
 msgid "Help us improving"
-msgstr "Ayudanos a mejorar"
+msgstr "Ayúdanos a mejorar"
 
 #: app/templates/login.html:16
 msgid "Write your email address and we'll send you a link to log in"
