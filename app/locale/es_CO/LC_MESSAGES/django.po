@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-10 20:44+0000\n"
+"POT-Creation-Date: 2017-08-22 16:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,8 +43,6 @@ msgid "Page not found"
 msgstr "Página no encontrada"
 
 #: app/templates/404.html:9
-#, fuzzy
-#| msgid "The page you are looking for does not exists"
 msgid ""
 "The page you are looking for does not exists or don't have permissions to "
 "access, try to log in"
@@ -187,7 +185,7 @@ msgstr "Ayúdanos a mejorar"
 msgid "Write your email address and we'll send you a link to log in"
 msgstr ""
 "Escribe tu dirección de correo electrónico y nosotros te enviaremos un "
-"enlace para iniciar sessión"
+"enlace para iniciar sesión"
 
 #: app/templates/login_email.html:3
 msgid "Please use this following link to log into the site"
