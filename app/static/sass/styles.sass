@@ -102,8 +102,19 @@ footer
     padding: 0px 20px
     @include clearfix
 
-    article img
-        max-width: 100%
+    article
+        img
+            max-width: 100%
+
+        .videoWrap
+            position: relative
+            padding-bottom: 56.25%
+            padding-top: 25px
+            height: 0
+
+            iframe
+                @include size(100%)
+                @include position(absolute, 0px null null 0px)
 
 .container-xs
     max-width: $max-width-xs
@@ -238,7 +249,7 @@ button
 
 .article-detail
     @include min-height()
-    
+
     h1
         margin: 0px
 
